@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Categories from './components/Categories';
+import Game from './components/Game';
+
+import './scss/app.scss';
+
+import games from '../src/assets/games.json';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header />
+      <main className="main">
+        <Categories />
+
+        <div className="catalog">
+          {games.map((obj) => (
+            <Game title={obj.name} price={obj.price} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "img/mario.jpg",
+    "name": "Super Mario Bros. 3",
+    "condition": [0, 1],
+    "price": 25,
+    "genre": "platformer"
+  },
+  {
+    "id": 1,
+    "imageUrl": "img/mario.jpg",
+    "name": "Super Mario Bros. 2",
+    "condition": [0, 1],
+    "price": 15,
+    "genre": "platformer"
+  },
+  {
+    "id": 2,
+    "imageUrl": "img/mario.jpg",
+    "name": "Super Mario Bros. 1",
+    "condition": [0, 1],
+    "price": 34,
+    "genre": "platformer"
+  }
+]
