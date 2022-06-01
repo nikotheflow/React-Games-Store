@@ -1,0 +1,255 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: Nunito, sans-serif;
+  background-color: #edeae7;
+  color: #383634;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo-img {
+  padding: 8px;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.btn {
+  font-family: Nunito, sans-serif;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn__primary {
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  background-color: #ef3b39;
+  border-radius: 4px;
+  color: white;
+  padding: 4px 12px;
+}
+
+.cart-btn__img {
+  padding: 2px;
+}
+
+.categories {
+  border-radius: 10px;
+  padding: 10px 30px 10px 10px;
+}
+
+.categories__title {
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.categories__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.categories__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.categories__item-title {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.categories__item-checkbox {
+  margin: 0 4px 0 0;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.catalog {
+  padding: 10px 20px;
+}
+
+.catalog__header {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.catalog__sort-btn {
+  font-weight: 600;
+  color: #ef3b39;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.catalog__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 220px;
+}
+
+.game__img {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.game__title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.game__options {
+  font-size: 14px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #eee;
+  border-radius: 4px;
+  margin: 0 0 8px;
+}
+
+.game__option {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+.game__option_active {
+  background-color: #fff;
+}
+
+.game__buy-block {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.game__add-btn {
+  padding: 4px 20px;
+}
+
+.game__price {
+  font-weight: 700;
+}

@@ -8,8 +8,8 @@ function Header() {
         <img className="logo-img" src={logoImg} width="40" height="40" alt="logo"></img>
         <span className="logo-title">Retro Games Store</span>
       </div>
-      <button className="cart-btn btn">
-        <img className="cart-img" src={cartImg} width="20" height="20" alt="cart"></img>
+      <button className="cart-btn btn__primary btn">
+        <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
         <span>Cart: $100</span>
       </button>
     </header>

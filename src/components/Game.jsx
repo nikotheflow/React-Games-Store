@@ -1,18 +1,20 @@
 import React from 'react';
 
-import gameImg from '../assets/img/mario.jpg';
+//import gameImg from '../assets/img/mario.jpg';
 
-function Game({ title, price }) {
+function Game({ imageUrl, name, price }) {
   return (
     <div className="game">
-      <img className="game__img" src={gameImg} alt="game"></img>
-      <span className="game__title">{title}</span>
-      <div className="game__options">
-        <span className="game__option">New</span>
-        <span className="game__option">Used</span>
+      <img className="game__img" src="../assets/img/mario.jpg" alt="game"></img>
+      <span className="game__title">{name}</span>
+      <ul className="game__options">
+        <li className="game__option game__option_active">New</li>
+        <li className="game__option">Used</li>
+      </ul>
+      <div className="game__buy-block">
+        <button className="game__add-btn btn__primary btn">Add</button>
+        <span className="game__price">${price}</span>
       </div>
-      <span className="game__price">${price}</span>
-      <button className="game__add-btn btn">Add</button>
     </div>
   );
 }

@@ -14,12 +14,12 @@ function Categories() {
 
   return (
     <div className="categories">
-      <span className="categories-title">Genre:</span>
-      <ul className="categories-list">
+      <span className="categories__title">Genre:</span>
+      <ul className="categories__list">
         {genres.map((value) => (
-          <li className="categories-item">
-            <label>
-              <input type="checkbox"></input>
+          <li className="categories__item">
+            <label className="categories__item-title">
+              <input className="categories__item-checkbox" type="checkbox"></input>
               {value}
             </label>
           </li>

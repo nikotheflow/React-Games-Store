@@ -1,26 +1,26 @@
 [
   {
-    "id": 0,
-    "imageUrl": "img/mario.jpg",
-    "name": "Super Mario Bros. 3",
-    "condition": [0, 1],
-    "price": 25,
-    "genre": "platformer"
-  },
-  {
     "id": 1,
-    "imageUrl": "img/mario.jpg",
-    "name": "Super Mario Bros. 2",
+    "imageUrl": "../assets/img/1.jpg",
+    "name": "New Super Mario Land",
     "condition": [0, 1],
-    "price": 15,
+    "price": "21.99",
     "genre": "platformer"
   },
   {
     "id": 2,
-    "imageUrl": "img/mario.jpg",
-    "name": "Super Mario Bros. 1",
+    "imageUrl": "img/2.jpg",
+    "name": "Super Metroid 8 in 1",
     "condition": [0, 1],
-    "price": 34,
+    "price": "49.99",
+    "genre": "platformer"
+  },
+  {
+    "id": 3,
+    "imageUrl": "img/3.jpg",
+    "name": "The Legend Of Zelda 8 in 1",
+    "condition": [0, 1],
+    "price": "49.99",
     "genre": "platformer"
   }
 ]

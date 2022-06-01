@@ -15,9 +15,16 @@ function App() {
         <Categories />
 
         <div className="catalog">
-          {games.map((obj) => (
-            <Game title={obj.name} price={obj.price} />
-          ))}
+          <div className="catalog__header">
+            <span className="catalog__sort">
+              Сортировать по <span className="catalog__sort-btn">алфавиту</span>
+            </span>
+          </div>
+          <div className="catalog__main">
+            {games.map((obj) => (
+              <Game {...obj} />
+            ))}
+          </div>
         </div>
       </main>
     </div>
