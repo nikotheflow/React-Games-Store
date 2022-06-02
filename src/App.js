@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Categories from './components/Categories';
 import Game from './components/Game';
+import Sort from './components/Sort';
 
 import './scss/app.scss';
 
@@ -16,13 +17,11 @@ function App() {
 
         <div className="catalog">
           <div className="catalog__header">
-            <span className="catalog__sort">
-              Сортировать по <span className="catalog__sort-btn">алфавиту</span>
-            </span>
+            <Sort />
           </div>
           <div className="catalog__main">
             {games.map((obj) => (
-              <Game {...obj} />
+              <Game key={obj.id} {...obj} />
             ))}
           </div>
         </div>

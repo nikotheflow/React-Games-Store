@@ -16,8 +16,8 @@ function Categories() {
     <div className="categories">
       <span className="categories__title">Genre:</span>
       <ul className="categories__list">
-        {genres.map((value) => (
-          <li className="categories__item">
+        {genres.map((value, i) => (
+          <li className="categories__item" key={i}>
             <label className="categories__item-title">
               <input className="categories__item-checkbox" type="checkbox"></input>
               {value}

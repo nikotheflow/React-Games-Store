@@ -1,15 +1,23 @@
 import React from 'react';
 
-//import gameImg from '../assets/img/mario.jpg';
+function Game({ imageUrl, name, price, version }) {
+  const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
-function Game({ imageUrl, name, price }) {
+  const versionNames = ['Physical', 'Digital'];
+
   return (
     <div className="game">
-      <img className="game__img" src="../assets/img/mario.jpg" alt="game"></img>
+      <img className="game__img" src={imageUrl} alt="game"></img>
       <span className="game__title">{name}</span>
       <ul className="game__options">
-        <li className="game__option game__option_active">New</li>
-        <li className="game__option">Used</li>
+        {version.map((versionId, i) => (
+          <li
+            className={activeVersion === versionId ? 'game__option active' : 'game__option'}
+            key={versionId}
+            onClick={() => setActiveVersion(versionId)}>
+            {versionNames[versionId]}
+          </li>
+        ))}
       </ul>
       <div className="game__buy-block">
         <button className="game__add-btn btn__primary btn">Add</button>

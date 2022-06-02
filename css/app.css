@@ -158,13 +158,6 @@ body {
   margin-bottom: 8px;
 }
 
-.catalog__sort-btn {
-  font-weight: 600;
-  color: #ef3b39;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .catalog__main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -197,9 +190,10 @@ body {
 }
 
 .game__title {
+  text-align: center;
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: auto;
 }
 
 .game__options {
@@ -213,10 +207,15 @@ body {
           justify-content: space-between;
   background-color: #eee;
   border-radius: 4px;
-  margin: 0 0 8px;
+  margin: 8px 0 16px;
+}
+
+.game__options .active {
+  background-color: #fff;
 }
 
 .game__option {
+  font-size: 12px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -227,10 +226,6 @@ body {
   cursor: pointer;
   margin: 2px;
   border-radius: 4px;
-}
-
-.game__option_active {
-  background-color: #fff;
 }
 
 .game__buy-block {
@@ -252,4 +247,48 @@ body {
 
 .game__price {
   font-weight: 700;
+}
+
+.sort {
+  position: relative;
+  text-align: right;
+}
+
+.sort__title {
+  font-weight: 600;
+}
+
+.sort__link {
+  color: #ef3b39;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sort__popup {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  display: block;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(56, 54, 52, 0.2);
+          box-shadow: 0px 0px 12px 1px rgba(56, 54, 52, 0.2);
+  margin: 0;
+}
+
+.sort__popup-item {
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sort__popup-item:hover {
+  background-color: #fef6f6;
+}
+
+.sort__popup .active {
+  color: #ef3b39;
+  font-weight: 600;
 }
