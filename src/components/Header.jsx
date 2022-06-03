@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <img className="logo-img" src={logoImg} width="40" height="40" alt="logo"></img>
+        <img className="logo-img" src={logoImg} width="32" height="32" alt="logo"></img>
         <span className="logo-title">Retro Games Store</span>
       </div>
       <button className="cart-btn btn__primary btn">

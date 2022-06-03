@@ -74,7 +74,7 @@ body {
 }
 
 .logo-img {
-  padding: 8px;
+  margin-right: 8px;
 }
 
 .logo-title {
@@ -109,23 +109,22 @@ body {
   padding: 2px;
 }
 
-.categories {
+.filters {
   border-radius: 10px;
-  padding: 10px 30px 10px 10px;
 }
 
-.categories__title {
+.filters__title {
   font-weight: 700;
   margin-top: 20px;
 }
 
-.categories__list {
+.filters__list {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.categories__item {
+.filters__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,12 +133,12 @@ body {
           align-items: center;
 }
 
-.categories__item-title {
+.filters__item-title {
   font-size: 14px;
   white-space: nowrap;
 }
 
-.categories__item-checkbox {
+.filters__item-checkbox {
   margin: 0 4px 0 0;
 }
 
@@ -147,22 +146,50 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 50px;
 }
 
 .catalog {
-  padding: 10px 20px;
+  width: 100%;
+}
+
+.catalog__title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.catalog__subtitle {
+  font-size: 14px;
 }
 
 .catalog__header {
-  font-size: 14px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 8px;
+}
+
+.catalog__header-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .catalog__main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -181,7 +208,13 @@ body {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  width: 220px;
+  width: calc((100% / 3) - (2rem / 3));
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.game:nth-child(3n) {
+  margin-right: 0;
 }
 
 .game__img {
@@ -250,8 +283,8 @@ body {
 }
 
 .sort {
+  font-size: 14px;
   position: relative;
-  text-align: right;
 }
 
 .sort__title {
