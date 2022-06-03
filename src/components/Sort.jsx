@@ -23,7 +23,7 @@ function Sort() {
         <ul className="sort__popup">
           {sortTypes.map((sortType, i) => (
             <li
-              className={activeSort == i ? 'sort__popup-item active' : 'sort__popup-item'}
+              className={activeSort === i ? 'sort__popup-item active' : 'sort__popup-item'}
               key={i}
               onClick={() => applySort(i)}>
               {sortType}

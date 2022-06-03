@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Filters from './components/Filters';
 import Game from './components/Game';
+import Skeleton from './components/Game/Skeleton';
 import Sort from './components/Sort';
 
 import './scss/app.scss';
