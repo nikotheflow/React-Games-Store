@@ -23,6 +23,9 @@ ol[class] {
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  text-decoration: none;
+  color: inherit;
+  display: auto;
 }
 
 img {
@@ -175,6 +178,7 @@ body {
 
   &__img {
     width: 100%;
+    object-fit: cover;
     margin-bottom: 8px;
   }
 

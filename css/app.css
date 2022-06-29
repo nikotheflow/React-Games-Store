@@ -219,6 +219,8 @@ body {
 
 .game__img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-bottom: 8px;
 }
 
