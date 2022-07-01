@@ -10,7 +10,7 @@ function GameBlock({ imageUrl, name, price, version, genres }) {
       <img className="game__img" src={imageUrl} alt="game"></img>
       <p className="game__title">{name}</p>
       <div className="game__info">
-        <p className="game__text">Konami</p>
+        <p className="game__text">Nintendo</p>
         <p className="game__text">{genres.join(', ')}</p>
       </div>
 

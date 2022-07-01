@@ -4,7 +4,7 @@ function Sort() {
   const [isOpen, setOpen] = React.useState(false);
   const [activeSort, setActiveSort] = React.useState(0);
 
-  const sortTypes = ['алфавиту', 'рейтингу', 'цене'];
+  const sortTypes = ['alphabet', 'rating', 'price'];
 
   const applySort = (i) => {
     setActiveSort(i);
@@ -14,7 +14,7 @@ function Sort() {
   return (
     <div className="sort">
       <span className="sort__title">
-        Сортировка по:{' '}
+        Sort by:{' '}
         <span className="sort__link" onClick={() => setOpen(!isOpen)}>
           {sortTypes[activeSort]}
         </span>
