@@ -8,9 +8,12 @@ function GameBlock({ imageUrl, name, price, version, genres }) {
   return (
     <div className="game">
       <img className="game__img" src={imageUrl} alt="game"></img>
-      <span className="game__title">{name}</span>
-      <span className="game__info">{genres.join(', ')}</span>
-      <span className="game__info">Konami</span>
+      <p className="game__title">{name}</p>
+      <div className="game__info">
+        <p className="game__text">Konami</p>
+        <p className="game__text">{genres.join(', ')}</p>
+      </div>
+
       <ul className="game__options">
         {version.map((versionId, i) => (
           <li
