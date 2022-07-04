@@ -13,9 +13,13 @@ function Header() {
         </div>
       </Link>
       <Link to="/cart">
-        <button className="cart-btn btn__primary btn">
-          <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
-          <span>Cart: $100</span>
+        <button className="btn btn_contained">
+          <span>$274.74</span>
+          <div className="vertical-divider"></div>
+          <div className="cart-btn__counter">
+            <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
+            <span>3</span>
+          </div>
         </button>
       </Link>
     </header>

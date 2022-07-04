@@ -8,7 +8,7 @@ function GameBlock({ imageUrl, name, price, version, genres }) {
   return (
     <div className="game">
       <img className="game__img" src={imageUrl} alt="game"></img>
-      <p className="game__title">{name}</p>
+      <h3 className="game__title">{name}</h3>
       <div className="game__info">
         <p className="game__text">Nintendo</p>
         <p className="game__text">{genres.join(', ')}</p>
@@ -25,8 +25,8 @@ function GameBlock({ imageUrl, name, price, version, genres }) {
         ))}
       </ul>
       <div className="game__buy-block">
-        <button className="game__add-btn btn__primary btn">Add</button>
-        <span className="game__price">${price}</span>
+        <button className="game__add-btn btn_contained btn">Add</button>
+        <span className="text__primary">${price}</span>
       </div>
     </div>
   );
