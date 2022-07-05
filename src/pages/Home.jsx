@@ -8,15 +8,18 @@ import Sort from '../components/Sort';
 const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [activeSort, setActiveSort] = React.useState({ name: 'alphabet', designation: 'title' });
 
   React.useEffect(() => {
-    fetch('https://6299c5107b866a90ec42181e.mockapi.io/items')
+    fetch(
+      `https://6299c5107b866a90ec42181e.mockapi.io/items?sortBy=${activeSort.designation}&order=asc`,
+    )
       .then((res) => res.json())
       .then((arr) => {
         setItems(arr);
         setIsLoading(false);
       });
-  }, []);
+  }, [activeSort]);
 
   return (
     <>
@@ -27,7 +30,7 @@ const Home = () => {
             <span className="catalog__title">SNES Games</span>
             <span className="catalog__subtitle">Showed 8 games</span>
           </div>
-          <Sort />
+          <Sort value={activeSort} onChangeSort={(i) => setActiveSort(i)} />
         </div>
         <div className="catalog__main">
           {isLoading

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameBlock({ imageUrl, name, price, version, genres }) {
+function GameBlock({ imageUrl, title, price, version, genres }) {
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
   const versionNames = ['Physical', 'Digital'];
@@ -8,7 +8,7 @@ function GameBlock({ imageUrl, name, price, version, genres }) {
   return (
     <div className="game">
       <img className="game__img" src={imageUrl} alt="game"></img>
-      <h3 className="game__title">{name}</h3>
+      <h3 className="game__title">{title}</h3>
       <div className="game__info">
         <p className="game__text">Nintendo</p>
         <p className="game__text">{genres.join(', ')}</p>
