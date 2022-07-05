@@ -8,7 +8,10 @@ import Sort from '../components/Sort';
 const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [activeSort, setActiveSort] = React.useState({ name: 'alphabet', designation: 'title' });
+  const [activeSort, setActiveSort] = React.useState({
+    name: 'Name (A - Z)',
+    designation: 'title',
+  });
   const [activeFilters, setActiveFilters] = React.useState('');
 
   React.useEffect(() => {
@@ -16,7 +19,9 @@ const Home = () => {
     fetch(
       `https://6299c5107b866a90ec42181e.mockapi.io/items?${
         activeFilters.length > 0 ? `genres=${activeFilters}` : ''
-      }&sortBy=${activeSort.designation}&order=asc`,
+      }&sortBy=${activeSort.designation.replace('-', '')}&order=${
+        activeSort.designation[0] === '-' ? 'desc' : 'asc'
+      }`,
     )
       .then((res) => res.json())
       .then((arr) => {

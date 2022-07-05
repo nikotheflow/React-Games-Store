@@ -3,9 +3,10 @@ import React from 'react';
 function Sort({ value, onChangeSort }) {
   const [isOpen, setOpen] = React.useState(false);
   const sortTypes = [
-    { name: 'alphabet', designation: 'title' },
-    { name: 'rating', designation: 'rating' },
-    { name: 'price', designation: 'price' },
+    { name: 'Name (A - Z)', designation: 'title' },
+    { name: 'Name (Z - A)', designation: '-title' },
+    { name: 'Price (low to high)', designation: 'price' },
+    { name: 'Price (high to low)', designation: '-price' },
   ];
 
   const applySort = (i) => {
