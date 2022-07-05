@@ -9,21 +9,25 @@ const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [activeSort, setActiveSort] = React.useState({ name: 'alphabet', designation: 'title' });
+  const [activeFilters, setActiveFilters] = React.useState('');
 
   React.useEffect(() => {
+    setIsLoading(true);
     fetch(
-      `https://6299c5107b866a90ec42181e.mockapi.io/items?sortBy=${activeSort.designation}&order=asc`,
+      `https://6299c5107b866a90ec42181e.mockapi.io/items?${
+        activeFilters.length > 0 ? `genres=${activeFilters}` : ''
+      }&sortBy=${activeSort.designation}&order=asc`,
     )
       .then((res) => res.json())
       .then((arr) => {
         setItems(arr);
         setIsLoading(false);
       });
-  }, [activeSort]);
+  }, [activeSort, activeFilters]);
 
   return (
     <>
-      <Filters />
+      <Filters value={activeFilters} onChangeFilters={(i) => setActiveFilters(i)} />
       <div className="catalog">
         <div className="catalog__header">
           <div className="catalog__header-left">

@@ -1,16 +1,11 @@
 import React from 'react';
 
-function Filters() {
-  const genres = [
-    'Action',
-    'Adventure',
-    'Indie',
-    'Racing',
-    'RPG',
-    'Simulation',
-    'Sports',
-    'Strategy',
-  ];
+function Filters({ value, onChangeFilters }) {
+  const genres = ['Action', 'Adventure', "Beat'em up", 'Platformer', 'RPG'];
+
+  const applyFilters = (i) => {
+    onChangeFilters(i);
+  };
 
   return (
     <div className="filters">
@@ -19,7 +14,11 @@ function Filters() {
         {genres.map((value, i) => (
           <li className="filters__item" key={i}>
             <label className="filters__item-title">
-              <input className="filters__item-checkbox" type="checkbox"></input>
+              <input
+                className="filters__item-checkbox"
+                name="genres"
+                type="radio"
+                onClick={() => applyFilters(value)}></input>
               {value}
             </label>
           </li>
