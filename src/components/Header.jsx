@@ -5,7 +5,7 @@ import Search from '../components/Search';
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 
-function Header() {
+function Header({ searchValue, setSearchValue }) {
   return (
     <header className="header">
       <Link to="/">
@@ -14,18 +14,19 @@ function Header() {
           <span className="logo-title">Retro Games Store</span>
         </div>
       </Link>
-      <Search />
-
-      <Link to="/cart">
-        <button className="btn btn_contained">
-          <span>$274.74</span>
-          <div className="vertical-divider"></div>
-          <div className="cart-btn__counter">
-            <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
-            <span>3</span>
-          </div>
-        </button>
-      </Link>
+      <div className="header__right">
+        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Link to="/cart">
+          <button className="btn btn_contained">
+            <span>$274.74</span>
+            <div className="vertical-divider"></div>
+            <div className="cart-btn__counter">
+              <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
+              <span>3</span>
+            </div>
+          </button>
+        </Link>
+      </div>
     </header>
   );
 }

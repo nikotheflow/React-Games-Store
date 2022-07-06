@@ -5,7 +5,7 @@ import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
 import Sort from '../components/Sort';
 
-const Home = () => {
+const Home = ({ searchValue }) => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [activeSort, setActiveSort] = React.useState({
@@ -14,21 +14,22 @@ const Home = () => {
   });
   const [activeFilters, setActiveFilters] = React.useState('');
 
+  const genresFetch = activeFilters.length > 0 ? `genres=${activeFilters}` : '';
+  const sortFetch = activeSort.designation.replace('-', '');
+  const orderFetch = activeSort.designation[0] === '-' ? 'desc' : 'asc';
+  const titleFetch = searchValue ? `title=${searchValue}` : '';
+
   React.useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://6299c5107b866a90ec42181e.mockapi.io/items?${
-        activeFilters.length > 0 ? `genres=${activeFilters}` : ''
-      }&sortBy=${activeSort.designation.replace('-', '')}&order=${
-        activeSort.designation[0] === '-' ? 'desc' : 'asc'
-      }`,
+      `https://6299c5107b866a90ec42181e.mockapi.io/items?${genresFetch}&sortBy=${sortFetch}&order=${orderFetch}&${titleFetch}`,
     )
       .then((res) => res.json())
       .then((arr) => {
         setItems(arr);
         setIsLoading(false);
       });
-  }, [activeSort, activeFilters]);
+  }, [genresFetch, sortFetch, orderFetch, titleFetch]);
 
   return (
     <>
