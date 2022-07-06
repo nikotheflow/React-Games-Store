@@ -43,7 +43,7 @@ const Home = () => {
         </div>
         <div className="catalog__main">
           {isLoading
-            ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
+            ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
             : items.map((obj) => <GameBlock key={obj.id} {...obj} />)}
         </div>
       </div>

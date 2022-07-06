@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import Search from '../components/Search';
+
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 
@@ -12,6 +14,8 @@ function Header() {
           <span className="logo-title">Retro Games Store</span>
         </div>
       </Link>
+      <Search />
+
       <Link to="/cart">
         <button className="btn btn_contained">
           <span>$274.74</span>
