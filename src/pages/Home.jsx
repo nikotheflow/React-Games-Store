@@ -1,12 +1,15 @@
 import React from 'react';
 
+import { SearchContext } from '../App';
+
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
 import Sort from '../components/Sort';
 import Pagination from '../components/Pagination';
 
-const Home = ({ searchValue }) => {
+const Home = () => {
+  const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [activeSort, setActiveSort] = React.useState({
@@ -16,12 +19,10 @@ const Home = ({ searchValue }) => {
   const [activeFilters, setActiveFilters] = React.useState('');
   const [activePage, setActivePage] = React.useState(0);
 
-  const genresFetch = activeFilters.length > 0 ? `genres=${activeFilters}` : '';
+  const genresFetch = activeFilters.length ? `genres=${activeFilters}` : '';
   const sortFetch = activeSort.designation.replace('-', '');
   const orderFetch = activeSort.designation[0] === '-' ? 'desc' : 'asc';
   const titleFetch = searchValue ? `title=${searchValue}` : '';
-
-  console.log(activePage);
 
   React.useEffect(() => {
     setIsLoading(true);

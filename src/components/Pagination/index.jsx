@@ -12,7 +12,7 @@ const Pagination = ({ activePage, setActivePage }) => {
       nextLabel=">"
       onPageChange={(e) => setActivePage(e.selected)}
       pageRangeDisplayed={4}
-      pageCount={3}
+      pageCount={2}
       renderOnZeroPageCount={null}
     />
   );

@@ -5,7 +5,7 @@ import Search from '../components/Search';
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 
-function Header({ searchValue, setSearchValue }) {
+function Header() {
   return (
     <header className="header">
       <Link to="/">
@@ -15,7 +15,7 @@ function Header({ searchValue, setSearchValue }) {
         </div>
       </Link>
       <div className="header__right">
-        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Search />
         <Link to="/cart">
           <button className="btn btn_contained">
             <span>$274.74</span>
