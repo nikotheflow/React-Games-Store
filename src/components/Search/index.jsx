@@ -1,17 +1,32 @@
 import React from 'react';
+import debounce from 'lodash.debounce';
 
 import { SearchContext } from '../../App';
 
 import styles from './Search.module.scss';
 
 const Search = () => {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const [inputValue, setInputValue] = React.useState('');
+  const { setSearchValue } = React.useContext(SearchContext);
   const refSearch = React.useRef();
 
+  const onChangeInput = (e) => {
+    setInputValue(e.target.value);
+    updateSearchValue(e.target.value);
+  };
+
   const onClickClearBtn = () => {
+    setInputValue('');
     setSearchValue('');
     refSearch.current.focus();
   };
+
+  const updateSearchValue = React.useCallback(
+    debounce((str) => {
+      setSearchValue(str);
+    }, 400),
+    [],
+  );
 
   return (
     <div className={styles.root}>
@@ -28,14 +43,14 @@ const Search = () => {
       </svg>
       <input
         ref={refSearch}
-        value={searchValue}
+        value={inputValue}
         className={styles.input}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={onChangeInput}
         placeholder="Search game..."></input>
-      {searchValue && (
+      {inputValue && (
         <svg
           className={styles['close-icon']}
-          onClick={() => onClickClearBtn()}
+          onClick={onClickClearBtn}
           data-name="Layer 1"
           height="200"
           id="Layer_1"

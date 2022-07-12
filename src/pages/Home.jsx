@@ -28,7 +28,7 @@ const Home = () => {
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
-  };
+  }; 
 
   React.useEffect(() => {
     setIsLoading(true);
