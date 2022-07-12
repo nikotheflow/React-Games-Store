@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import { SearchContext } from '../App';
 import { setActiveGenres } from '../redux/slices/filterSlice';
@@ -20,10 +21,10 @@ const Home = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [activePage, setActivePage] = React.useState(0);
 
-  const genresFetch = activeGenres.length ? `genres=${activeGenres}` : '';
-  const sortFetch = activeSort.replace('-', '');
-  const orderFetch = activeSort[0] === '-' ? 'desc' : 'asc';
-  const titleFetch = searchValue ? `title=${searchValue}` : '';
+  const genres = activeGenres.length ? `genres=${activeGenres}` : '';
+  const sort = activeSort.replace('-', '');
+  const order = activeSort[0] === '-' ? 'desc' : 'asc';
+  const title = searchValue ? `title=${searchValue}` : '';
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
@@ -31,17 +32,18 @@ const Home = () => {
 
   React.useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${
-        activePage + 1
-      }&limit=4&${genresFetch}&sortBy=${sortFetch}&order=${orderFetch}&${titleFetch}`,
-    )
-      .then((res) => res.json())
-      .then((arr) => {
-        setItems(arr);
+
+    axios
+      .get(
+        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${
+          activePage + 1
+        }&limit=4&${genres}&sortBy=${sort}&order=${order}&${title}`,
+      )
+      .then((res) => {
+        setItems(res.data);
         setIsLoading(false);
       });
-  }, [activePage, genresFetch, sortFetch, orderFetch, titleFetch]);
+  }, [activePage, genres, sort, order, title]);
 
   return (
     <>
