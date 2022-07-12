@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { SearchContext } from '../App';
-import { setActiveGenres } from '../redux/slices/filterSlice';
+import { setActiveGenres, setCurrentPage } from '../redux/slices/filterSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
@@ -13,13 +13,12 @@ import Pagination from '../components/Pagination';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { activeGenres, sortType } = useSelector((state) => state.filter);
+  const { activeGenres, sortType, currentPage } = useSelector((state) => state.filter);
   const activeSort = sortType.designation;
 
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [activePage, setActivePage] = React.useState(0);
 
   const genres = activeGenres.length ? `genres=${activeGenres}` : '';
   const sort = activeSort.replace('-', '');
@@ -28,22 +27,24 @@ const Home = () => {
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
-  }; 
+  };
+
+  const onChangePage = (number) => {
+    dispatch(setCurrentPage(number));
+  };
 
   React.useEffect(() => {
     setIsLoading(true);
 
     axios
       .get(
-        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${
-          activePage + 1
-        }&limit=4&${genres}&sortBy=${sort}&order=${order}&${title}`,
+        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=4&${genres}&sortBy=${sort}&order=${order}&${title}`,
       )
       .then((res) => {
         setItems(res.data);
         setIsLoading(false);
       });
-  }, [activePage, genres, sort, order, title]);
+  }, [currentPage, genres, sort, order, title]);
 
   return (
     <>
@@ -61,7 +62,7 @@ const Home = () => {
             ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
             : items.map((obj) => <GameBlock key={obj.id} {...obj} />)}
         </div>
-        <Pagination activePage={activePage} setActivePage={setActivePage} />
+        <Pagination currentPage={currentPage} onChangePage={onChangePage} />
       </div>
     </>
   );
