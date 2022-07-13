@@ -1,29 +1,32 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import qs from 'qs';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { SearchContext } from '../App';
-import { setActiveGenres, setCurrentPage } from '../redux/slices/filterSlice';
+import { setActiveGenres, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
 import Sort from '../components/Sort';
+import { sortTypes } from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isSearch = React.useRef(false);
+  const isMounted = React.useRef(false);
+
   const { activeGenres, sortType, currentPage } = useSelector((state) => state.filter);
   const activeSort = sortType.designation;
 
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-
-  const genres = activeGenres.length ? `genres=${activeGenres}` : '';
-  const sort = activeSort.replace('-', '');
-  const order = activeSort[0] === '-' ? 'desc' : 'asc';
-  const title = searchValue ? `title=${searchValue}` : '';
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
@@ -33,18 +36,61 @@ const Home = () => {
     dispatch(setCurrentPage(number));
   };
 
-  React.useEffect(() => {
+  const fetchGames = () => {
     setIsLoading(true);
+
+    const genres = activeGenres ? `&genres=${activeGenres}` : '';
+    const title = searchValue ? `&title=${searchValue}` : '';
+    const sort = '&sortBy=' + activeSort.replace('-', '');
+    const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
 
     axios
       .get(
-        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=4&${genres}&sortBy=${sort}&order=${order}&${title}`,
+        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=8${genres}${sort}${order}${title}`,
       )
       .then((res) => {
         setItems(res.data);
         setIsLoading(false);
       });
-  }, [currentPage, genres, sort, order, title]);
+  };
+
+  React.useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const sortType = sortTypes.find((obj) => obj.designation === params.sortBy);
+
+      dispatch(
+        setFilters({
+          ...params,
+          sortType,
+        }),
+      );
+      isSearch.current = true;
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        currentPage,
+        activeGenres,
+        sortBy: sortType.designation,
+        order: sortType.designation[0] === '-' ? 'desc' : 'asc',
+      });
+
+      navigate(`?${queryString}`);
+    }
+
+    isMounted.current = true;
+  }, [currentPage, sortType, activeGenres]);
+
+  React.useEffect(() => {
+    if (!isSearch.current) {
+      fetchGames();
+    }
+
+    isSearch.current = false;
+  }, [currentPage, activeGenres, searchValue, activeSort]);
 
   return (
     <>

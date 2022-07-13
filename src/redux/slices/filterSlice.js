@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  searchValue: '',
   activeGenres: '',
   sortType: { name: 'Name (A - Z)', designation: 'title' },
   currentPage: 1,
@@ -19,9 +20,14 @@ const filterSlice = createSlice({
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
     },
+    setFilters(state, action) {
+      state.activeGenres = action.payload.activeGenres;
+      state.sortType = action.payload.sortType;
+      state.currentPage = action.payload.currentPage;
+    },
   },
 });
 
-export const { setActiveGenres, setSort, setCurrentPage } = filterSlice.actions;
+export const { setActiveGenres, setSort, setCurrentPage, setFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;
