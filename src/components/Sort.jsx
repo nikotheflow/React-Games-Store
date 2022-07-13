@@ -12,6 +12,7 @@ export const sortTypes = [
 function Sort() {
   const activeSort = useSelector((state) => state.filter.sortType);
   const dispatch = useDispatch();
+  const refSort = React.useRef();
 
   const [isOpen, setOpen] = React.useState(false);
 
@@ -20,8 +21,21 @@ function Sort() {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.path.includes(refSort.current)) {
+        setOpen(false);
+        console.log('yo');
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={refSort} className="sort">
       <span className="sort__title">
         Sort by:{' '}
         <span className="sort__link" onClick={() => setOpen(!isOpen)}>
