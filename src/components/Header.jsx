@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Search from '../components/Search';
 
@@ -6,6 +7,10 @@ import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 
 function Header() {
+  const { totalPrice, items } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <header className="header">
       <Link to="/">
@@ -18,11 +23,11 @@ function Header() {
         <Search />
         <Link to="/cart">
           <button className="btn btn_contained">
-            <span>$274.74</span>
+            <span>${totalPrice}</span>
             <div className="vertical-divider"></div>
             <div className="cart-btn__counter">
               <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
-              <span>3</span>
+              <span>{totalCount}</span>
             </div>
           </button>
         </Link>

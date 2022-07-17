@@ -25,7 +25,6 @@ function Sort() {
     const handleClickOutside = (event) => {
       if (!event.path.includes(refSort.current)) {
         setOpen(false);
-        console.log('yo');
       }
     };
 

@@ -1,9 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-function GameBlock({ imageUrl, title, price, version, genres }) {
+import { addItem } from '../../redux/slices/cartSlice';
+
+function GameBlock({ id, imageUrl, title, price, version, genres }) {
+  const dispatch = useDispatch();
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
   const versionNames = ['Physical', 'Digital'];
+
+  const onClickAdd = () => {
+    const item = {
+      id,
+      imageUrl,
+      title,
+      price,
+      version: versionNames[activeVersion],
+    };
+
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="game">
@@ -25,7 +41,9 @@ function GameBlock({ imageUrl, title, price, version, genres }) {
         ))}
       </ul>
       <div className="game__buy-block">
-        <button className="game__add-btn btn_contained btn">Add</button>
+        <button className="game__add-btn btn_contained btn" onClick={onClickAdd}>
+          Add
+        </button>
         <span className="text__primary">${price}</span>
       </div>
     </div>
