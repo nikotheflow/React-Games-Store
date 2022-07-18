@@ -7,9 +7,7 @@ import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 
 function Header() {
-  const { totalPrice, items } = useSelector((state) => state.cart);
-
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+  const { totalPrice, totalCount, items } = useSelector((state) => state.cart);
 
   return (
     <header className="header">

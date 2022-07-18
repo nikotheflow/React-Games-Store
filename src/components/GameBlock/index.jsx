@@ -1,13 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addItem } from '../../redux/slices/cartSlice';
 
 function GameBlock({ id, imageUrl, title, price, version, genres }) {
   const dispatch = useDispatch();
+  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
   const versionNames = ['Physical', 'Digital'];
+
+  const itemCount = cartItem ? cartItem.count : 0;
 
   const onClickAdd = () => {
     const item = {
@@ -42,9 +45,15 @@ function GameBlock({ id, imageUrl, title, price, version, genres }) {
       </ul>
       <div className="game__buy-block">
         <button className="game__add-btn btn_contained btn" onClick={onClickAdd}>
-          Add
+          Add{' '}
+          {itemCount > 0 &&
+            (itemCount < 100 ? (
+              <span className="game__add-btn-count">{itemCount}</span>
+            ) : (
+              <span className="game__add-btn-count">99</span>
+            ))}
         </button>
-        <span className="text__primary">${price}</span>
+        <span className="text__primary">${(+price).toFixed(2)}</span>
       </div>
     </div>
   );

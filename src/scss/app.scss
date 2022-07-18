@@ -389,6 +389,22 @@ body {
 
   &__add-btn {
     padding: 4px 20px;
+    position: relative;
+
+    &-count {
+      position: absolute;
+      top: -6px;
+      right: -12px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 17px;
+      color: #ef3b39;
+      border: 2px solid #ef3b39;
+      background-color: #fff;
+      border-radius: 20px;
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__price {

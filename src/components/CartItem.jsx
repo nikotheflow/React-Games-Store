@@ -1,6 +1,29 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
 function CartItem({ id, imageUrl, title, price, version, genres, count }) {
+  const dispatch = useDispatch();
+
+  const item = {
+    id,
+    price,
+    version,
+  };
+
+  const onClickPlus = () => {
+    dispatch(addItem(item));
+  };
+
+  const onClickMinus = () => {
+    dispatch(minusItem(item));
+  };
+
+  const onClickRemove = () => {
+    dispatch(removeItem(item));
+  };
+
   return (
     <div className="cart__item">
       <img className="cart__item-img game-img" src={imageUrl} alt="game"></img>
@@ -9,7 +32,7 @@ function CartItem({ id, imageUrl, title, price, version, genres, count }) {
         <p className="cart__item-option text__secondary">{version} version</p>
       </div>
       <div className="cart__item-counter ">
-        <button className="cart__item-counter-btn btn btn_round">
+        <button className="cart__item-counter-btn btn btn_round" onClick={onClickMinus}>
           <svg
             width="10"
             height="10"
@@ -21,7 +44,8 @@ function CartItem({ id, imageUrl, title, price, version, genres, count }) {
         </button>
 
         <span className="cart__item-counter-number text__primary">{count}</span>
-        <button className="cart__item-counter-btn btn btn_round">
+
+        <button className="cart__item-counter-btn btn btn_round" onClick={onClickPlus}>
           <svg
             width="10"
             height="10"
@@ -34,8 +58,10 @@ function CartItem({ id, imageUrl, title, price, version, genres, count }) {
         </button>
       </div>
 
-      <span className="cart__item-price text__primary">${count * price}</span>
-      <button className="cart__item-delete-btn btn btn_round btn_round-secondary">
+      <span className="cart__item-price text__primary">${(count * price).toFixed(2)}</span>
+      <button
+        className="cart__item-delete-btn btn btn_round btn_round-secondary"
+        onClick={onClickRemove}>
         <svg
           width="10"
           height="10"
