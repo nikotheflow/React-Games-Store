@@ -11,7 +11,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const findItem = state.items.find((obj, index) => obj.id === action.payload.id);
+      const findItem = state.items.find(
+        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
+      );
 
       if (findItem) {
         findItem.count++;
@@ -19,39 +21,59 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, count: 1 });
       }
 
-      state.totalCount++;
-      state.totalPrice = (
-        +(+state.totalPrice).toFixed(2) + +(+action.payload.price).toFixed(2)
-      ).toFixed(2);
-    },
-    minusItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload.id);
-      const indexOfFindItem = state.items.findIndex((obj) => obj.id === action.payload.id);
+      state.totalPrice = state.items
+        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
+        .toFixed(2);
+      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
 
-      findItem.count--;
-      if (findItem.count === 0) {
-        state.items.splice(indexOfFindItem, 1);
+      state.items.sort((a, b) => a.id - b.id);
+    },
+
+    minusItem(state, action) {
+      const findItem = state.items.find(
+        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
+      );
+      const indexOfFindItem = state.items.findIndex(
+        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
+      );
+
+      if (findItem.count > 1) {
+        findItem.count--;
+      } else if (findItem.count === 1) {
+        if (window.confirm('Are you sure you want to delete "' + findItem.title + '"?')) {
+          state.items.splice(indexOfFindItem, 1);
+        }
       }
 
-      state.totalCount--;
-      state.totalPrice = (
-        +(+state.totalPrice).toFixed(2) - +(+action.payload.price).toFixed(2)
-      ).toFixed(2);
+      state.totalPrice = state.items
+        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
+        .toFixed(2);
+      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
     },
+
     removeItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+      const findItem = state.items.find(
+        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
+      );
 
-      state.totalCount -= findItem.count;
-      state.totalPrice = (
-        +(+state.totalPrice).toFixed(2) - +(+action.payload.price * findItem.count).toFixed(2)
-      ).toFixed(2);
+      if (window.confirm('Are you sure you want to delete "' + findItem.title + '"?')) {
+        state.items = state.items.filter(function (obj) {
+          return obj.id !== action.payload.id || obj.version !== action.payload.version;
+        });
+      }
 
-      state.items = state.items.filter((obj) => obj.id !== action.payload.id);
+      state.totalPrice = state.items
+        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
+        .toFixed(2);
+      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
     },
+
     clearCart(state) {
-      state.items = [];
-      state.totalCount = 0;
-      state.totalPrice = 0;
+      if (window.confirm('Are you sure you want to clear the cart?')) {
+        state.items = [];
+        state.totalCount = 0;
+        state.totalPrice = 0;
+      }
     },
   },
 });

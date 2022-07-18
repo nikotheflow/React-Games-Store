@@ -5,10 +5,12 @@ import { addItem } from '../../redux/slices/cartSlice';
 
 function GameBlock({ id, imageUrl, title, price, version, genres }) {
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+  const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
-  const versionNames = ['Physical', 'Digital'];
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id && obj.version === versionNames[activeVersion]),
+  );
 
   const itemCount = cartItem ? cartItem.count : 0;
 

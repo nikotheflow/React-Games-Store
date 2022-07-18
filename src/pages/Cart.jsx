@@ -25,7 +25,7 @@ const Cart = () => {
         </div>
         <div className="cart__main">
           {items.map((obj) => (
-            <CartItem key={obj.id} {...obj} />
+            <CartItem key={obj.id + obj.version} {...obj} />
           ))}
         </div>
         <div className="cart__total">
