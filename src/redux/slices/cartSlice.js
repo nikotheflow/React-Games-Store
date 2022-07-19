@@ -33,17 +33,8 @@ const cartSlice = createSlice({
       const findItem = state.items.find(
         (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
       );
-      const indexOfFindItem = state.items.findIndex(
-        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
-      );
 
-      if (findItem.count > 1) {
-        findItem.count--;
-      } else if (findItem.count === 1) {
-        if (window.confirm('Are you sure you want to delete "' + findItem.title + '"?')) {
-          state.items.splice(indexOfFindItem, 1);
-        }
-      }
+      findItem.count--;
 
       state.totalPrice = state.items
         .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
@@ -52,15 +43,9 @@ const cartSlice = createSlice({
     },
 
     removeItem(state, action) {
-      const findItem = state.items.find(
-        (obj) => obj.id === action.payload.id && obj.version === action.payload.version,
-      );
-
-      if (window.confirm('Are you sure you want to delete "' + findItem.title + '"?')) {
-        state.items = state.items.filter(function (obj) {
-          return obj.id !== action.payload.id || obj.version !== action.payload.version;
-        });
-      }
+      state.items = state.items.filter(function (obj) {
+        return obj.id !== action.payload.id || obj.version !== action.payload.version;
+      });
 
       state.totalPrice = state.items
         .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
@@ -69,11 +54,9 @@ const cartSlice = createSlice({
     },
 
     clearCart(state) {
-      if (window.confirm('Are you sure you want to clear the cart?')) {
-        state.items = [];
-        state.totalCount = 0;
-        state.totalPrice = 0;
-      }
+      state.items = [];
+      state.totalCount = 0;
+      state.totalPrice = 0;
     },
   },
 });

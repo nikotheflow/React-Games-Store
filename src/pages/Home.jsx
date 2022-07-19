@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { SearchContext } from '../App';
 import { setActiveGenres, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
+import { fetchGames } from '../redux/slices/gamesSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
@@ -21,12 +22,11 @@ const Home = () => {
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
+  const { items, status } = useSelector((state) => state.games);
   const { activeGenres, sortType, currentPage } = useSelector((state) => state.filter);
   const activeSort = sortType.designation;
 
   const { searchValue } = React.useContext(SearchContext);
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
@@ -36,22 +36,21 @@ const Home = () => {
     dispatch(setCurrentPage(number));
   };
 
-  const fetchGames = () => {
-    setIsLoading(true);
-
+  const getGames = async () => {
     const genres = activeGenres ? `&genres=${activeGenres}` : '';
     const title = searchValue ? `&title=${searchValue}` : '';
     const sort = '&sortBy=' + activeSort.replace('-', '');
     const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
 
-    axios
-      .get(
-        `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=8${genres}${sort}${order}${title}`,
-      )
-      .then((res) => {
-        setItems(res.data);
-        setIsLoading(false);
-      });
+    dispatch(
+      fetchGames({
+        currentPage,
+        genres,
+        title,
+        sort,
+        order,
+      }),
+    );
   };
 
   React.useEffect(() => {
@@ -86,7 +85,7 @@ const Home = () => {
 
   React.useEffect(() => {
     if (!isSearch.current) {
-      fetchGames();
+      getGames();
     }
 
     isSearch.current = false;
@@ -99,12 +98,17 @@ const Home = () => {
         <div className="catalog__header">
           <div className="catalog__header-left">
             <span className="catalog__title">SNES Games</span>
-            <span className="catalog__subtitle">Showed 8 games</span>
+            <span className="catalog__subtitle">Showed {items.length} games</span>
           </div>
-          <Sort />
+          {status !== 'error' && <Sort />}
         </div>
+        {status === 'error' && (
+          <p className="text__main text__center">
+            Games catalog could not be loaded. Please try again later.
+          </p>
+        )}
         <div className="catalog__main">
-          {isLoading
+          {status === 'loading'
             ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
             : items.map((obj) => <GameBlock key={obj.id} {...obj} />)}
         </div>

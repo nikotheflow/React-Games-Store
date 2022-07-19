@@ -17,11 +17,17 @@ function CartItem({ id, imageUrl, title, price, version, count }) {
   };
 
   const onClickMinus = () => {
-    dispatch(minusItem(item));
+    if (count > 1) {
+      dispatch(minusItem(item));
+    } else {
+      onClickRemove();
+    }
   };
 
   const onClickRemove = () => {
-    dispatch(removeItem(item));
+    if (window.confirm('Are you sure you want to delete "' + title + '"?')) {
+      dispatch(removeItem(item));
+    }
   };
 
   return (

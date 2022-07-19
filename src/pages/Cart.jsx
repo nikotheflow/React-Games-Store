@@ -12,7 +12,9 @@ const Cart = () => {
   const { totalPrice, totalCount, items } = useSelector((state) => state.cart);
 
   const onClickClear = () => {
-    dispatch(clearCart());
+    if (window.confirm('Are you sure you want to clear the cart?')) {
+      dispatch(clearCart());
+    }
   };
 
   if (!totalCount) {

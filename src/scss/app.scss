@@ -48,9 +48,18 @@ h3 {
 }
 
 .text {
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
   &__primary {
     font-size: 16px;
     font-weight: 700;
+  }
+
+  &__main {
+    font-size: 16px;
   }
 
   &__secondary {
@@ -58,7 +67,8 @@ h3 {
     color: #999;
   }
 
-  &__main {
+  &__center {
+    text-align: center;
   }
 }
 
