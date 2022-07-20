@@ -3,7 +3,7 @@ import React from 'react';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import {
   setActiveGenres,
@@ -93,6 +93,13 @@ const Home = () => {
     isSearch.current = false;
   }, [currentPage, activeGenres, searchValue, activeSort]);
 
+  const games = items.map((obj) => (
+    <Link to={`/game/${obj.id}`} key={obj.id}>
+      <GameBlock {...obj} />
+    </Link>
+  ));
+  const skeletons = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
+
   return (
     <>
       <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
@@ -109,11 +116,7 @@ const Home = () => {
             Games catalog could not be loaded. Please try again later.
           </p>
         )}
-        <div className="catalog__main">
-          {status === 'loading'
-            ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
-            : items.map((obj) => <GameBlock key={obj.id} {...obj} />)}
-        </div>
+        <div className="catalog__main">{status === 'loading' ? skeletons : games}</div>
         <Pagination currentPage={currentPage} onChangePage={onChangePage} />
       </div>
     </>

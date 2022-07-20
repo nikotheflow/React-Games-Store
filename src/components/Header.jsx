@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 
 import Search from '../components/Search';
 
@@ -9,6 +9,7 @@ import { selectCart } from '../redux/slices/cartSlice';
 
 function Header() {
   const { totalPrice, totalCount } = useSelector(selectCart);
+  const location = useLocation();
 
   return (
     <header className="header">
@@ -18,19 +19,26 @@ function Header() {
           <span className="logo-title">Retro Games Store</span>
         </div>
       </Link>
-      <div className="header__right">
-        <Search />
-        <Link to="/cart">
-          <button className="btn btn_contained">
-            <span>${totalPrice}</span>
-            <div className="vertical-divider"></div>
-            <div className="cart-btn__counter">
-              <img className="cart-btn__img" src={cartImg} width="20" height="20" alt="cart"></img>
-              <span>{totalCount}</span>
-            </div>
-          </button>
-        </Link>
-      </div>
+      {location.pathname !== '/cart' && (
+        <div className="header__right">
+          <Search />
+          <Link to="/cart">
+            <button className="btn btn_contained">
+              <span>${totalPrice}</span>
+              <div className="vertical-divider"></div>
+              <div className="cart-btn__counter">
+                <img
+                  className="cart-btn__img"
+                  src={cartImg}
+                  width="20"
+                  height="20"
+                  alt="cart"></img>
+                <span>{totalCount}</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
