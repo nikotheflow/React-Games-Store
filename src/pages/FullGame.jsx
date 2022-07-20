@@ -1,10 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const FullGame = () => {
   const [game, setGame] = React.useState();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     async function fetchGame() {
@@ -13,7 +14,8 @@ const FullGame = () => {
         setGame(data);
         console.log(game);
       } catch (error) {
-        alert('Error!');
+        alert('Error while loading game!');
+        navigate('/');
       }
     }
 
