@@ -5,9 +5,10 @@ import Search from '../components/Search';
 
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
+import { selectCart } from '../redux/slices/cartSlice';
 
 function Header() {
-  const { totalPrice, totalCount, items } = useSelector((state) => state.cart);
+  const { totalPrice, totalCount } = useSelector(selectCart);
 
   return (
     <header className="header">

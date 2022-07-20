@@ -1,16 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItem } from '../../redux/slices/cartSlice';
+import { addItem, selectCartItem } from '../../redux/slices/cartSlice';
 
 function GameBlock({ id, imageUrl, title, price, version, genres }) {
   const dispatch = useDispatch();
   const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
 
-  const cartItem = useSelector((state) =>
-    state.cart.items.find((obj) => obj.id === id && obj.version === versionNames[activeVersion]),
-  );
+  const cartItem = useSelector(selectCartItem(id, versionNames, activeVersion));
 
   const itemCount = cartItem ? cartItem.count : 0;
 

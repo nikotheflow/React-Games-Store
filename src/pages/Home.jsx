@@ -5,9 +5,13 @@ import qs from 'qs';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { SearchContext } from '../App';
-import { setActiveGenres, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
-import { fetchGames } from '../redux/slices/gamesSlice';
+import {
+  setActiveGenres,
+  setCurrentPage,
+  setFilters,
+  selectFilter,
+} from '../redux/slices/filterSlice';
+import { fetchGames, selectGamesData } from '../redux/slices/gamesSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
@@ -22,11 +26,9 @@ const Home = () => {
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
-  const { items, status } = useSelector((state) => state.games);
-  const { activeGenres, sortType, currentPage } = useSelector((state) => state.filter);
+  const { items, status } = useSelector(selectGamesData);
+  const { searchValue, activeGenres, sortType, currentPage } = useSelector(selectFilter);
   const activeSort = sortType.designation;
-
-  const { searchValue } = React.useContext(SearchContext);
 
   const onChangeFilters = (genre) => {
     dispatch(setActiveGenres(genre));
