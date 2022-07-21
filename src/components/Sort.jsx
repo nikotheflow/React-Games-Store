@@ -34,12 +34,15 @@ function Sort() {
   }, []);
 
   return (
-    <div ref={refSort} className="sort">
-      <span className="sort__title">
+    <div ref={refSort} className="sort wrapper_content">
+      <span className="text__secondary">
         Sort by:{' '}
         <span className="sort__link" onClick={() => setOpen(!isOpen)}>
           {activeSort.name}
         </span>
+      </span>
+      <span className="text__secondary">
+        Show by: <b>10</b> 20 30
       </span>
       {isOpen && (
         <ul className="sort__popup">

@@ -102,22 +102,24 @@ const Home = () => {
 
   return (
     <>
-      <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
       <div className="catalog">
         <div className="catalog__header">
-          <div className="catalog__header-left">
-            <span className="catalog__title">SNES Games</span>
-            <span className="catalog__subtitle">Showed {items.length} games</span>
-          </div>
-          {status !== 'error' && <Sort />}
+          <h2 className="catalog__title">Super Nintendo Entertainment System</h2>
+          <span className="catalog__count text__secondary">{items.length} games</span>
         </div>
         {status === 'error' && (
           <p className="text__main text__center">
             Games catalog could not be loaded. Please try again later.
           </p>
         )}
-        <div className="catalog__main">{status === 'loading' ? skeletons : games}</div>
-        <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+        <div className="catalog__main">
+          <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
+          <div className="catalog__content">
+            {status !== 'error' && <Sort />}
+            <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
+            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+          </div>
+        </div>
       </div>
     </>
   );

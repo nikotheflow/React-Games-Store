@@ -33,8 +33,8 @@ const FullGame: React.FC = () => {
 
   return (
     <div className="game">
-      <img src={`../${game.imageUrl}`} alt="game" width="300"></img>
       <h2>{game.title}</h2>
+      <img src={`../${game.imageUrl}`} alt="game" width="300"></img>
       <p>{game.genres}</p>
       <span className="game__price">${game.price}</span>
     </div>

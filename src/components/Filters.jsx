@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Filters({ onChangeFilters }) {
   const genres = ['Action', 'Adventure', "Beat'em up", 'Platformer', 'RPG'];
 
@@ -8,12 +6,12 @@ function Filters({ onChangeFilters }) {
   };
 
   return (
-    <div className="filters">
-      <span className="filters__title">Genre:</span>
+    <div className="filters wrapper_content">
+      <p className="filters__title text__title">Genre:</p>
       <ul className="filters__list">
         {genres.map((genre, i) => (
           <li className="filters__item" key={i}>
-            <label className="filters__item-title">
+            <label className="filters__item-title text__secondary">
               <input
                 className="filters__item-checkbox"
                 name="genres"
