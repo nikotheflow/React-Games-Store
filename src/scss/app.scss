@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-ul[class],
-ol[class] {
-  padding: 0;
-  margin: 0;
-}
-
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -305,6 +299,7 @@ body {
   }
 
   &__main {
+    width: 100%;
     display: grid;
     grid-template-columns: 2fr 10fr;
     grid-gap: 20px;
@@ -371,6 +366,8 @@ body {
   }
 
   &__options {
+    padding: 0;
+    margin: 0;
     font-size: 14px;
     height: 24px;
     width: 100%;

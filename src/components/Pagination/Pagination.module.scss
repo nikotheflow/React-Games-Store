@@ -1,39 +1,62 @@
 .root {
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+
   li {
     display: inline-flex;
-    border: 1px solid #ef3b39;
-    border-radius: 4px;
     cursor: pointer;
     transition: 0.2s ease;
 
     &:hover {
-      background-color: #ef3b39;
+      background-color: #f1f1f1;
 
       a {
-        color: white;
+        color: #383634;
+        font-weight: 700;
       }
     }
 
-    &:not(:last-child) {
-      margin-right: 8px;
+    &:last-child {
+      margin-left: auto;
+
+      &:hover a {
+        color: #999;
+        font-weight: 700;
+      }
+    }
+
+    &:first-child {
+      margin-right: auto;
+
+      &:hover a {
+        color: #999;
+        font-weight: 700;
+      }
     }
 
     a {
-      width: 32px;
-      height: 32px;
+      padding: 0 40px;
+      height: 45px;
       font-size: 16px;
-      line-height: 32px;
-      color: #ef3b39;
+      line-height: 45px;
       text-align: center;
+      font-size: 14px;
+      color: #999;
     }
   }
 
   :global {
-    .selected {
-      background-color: #ef3b39;
+    display: flex;
+    justify-content: space-between;
 
+    .selected {
       a {
-        color: white;
+        color: #383634;
+        font-weight: 700;
       }
     }
   }
