@@ -2,27 +2,32 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSort, selectSortType } from '../redux/slices/filterSlice';
 
-export const sortTypes = [
+type SortItem = {
+  name: string;
+  designation: string;
+};
+
+export const sortTypes: SortItem[] = [
   { name: 'Name (A - Z)', designation: 'title' },
   { name: 'Name (Z - A)', designation: '-title' },
   { name: 'Price (low to high)', designation: 'price' },
   { name: 'Price (high to low)', designation: '-price' },
 ];
 
-function Sort() {
+const Sort: React.FC = () => {
   const activeSort = useSelector(selectSortType);
   const dispatch = useDispatch();
-  const refSort = React.useRef();
+  const refSort = React.useRef<HTMLDivElement>(null);
 
   const [isOpen, setOpen] = React.useState(false);
 
-  const applySort = (obj) => {
+  const applySort = (obj: SortItem) => {
     dispatch(setSort(obj));
     setOpen(false);
   };
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (!event.path.includes(refSort.current)) {
         setOpen(false);
       }
@@ -60,6 +65,6 @@ function Sort() {
       )}
     </div>
   );
-}
+};
 
 export default Sort;

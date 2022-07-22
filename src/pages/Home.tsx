@@ -30,12 +30,12 @@ const Home = () => {
   const { searchValue, activeGenres, sortType, currentPage } = useSelector(selectFilter);
   const activeSort = sortType.designation;
 
-  const onChangeFilters = (genre) => {
+  const onChangeFilters = (genre: string) => {
     dispatch(setActiveGenres(genre));
   };
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   const getGames = async () => {
@@ -45,6 +45,7 @@ const Home = () => {
     const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
 
     dispatch(
+      // @ts-ignore
       fetchGames({
         currentPage,
         genres,
@@ -93,12 +94,12 @@ const Home = () => {
     isSearch.current = false;
   }, [currentPage, activeGenres, searchValue, activeSort]);
 
-  const games = items.map((obj) => (
+  const games = items.map((obj: any) => (
     <Link to={`/game/${obj.id}`} key={obj.id}>
       <GameBlock {...obj} />
     </Link>
   ));
-  const skeletons = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
+  const skeletons = [...new Array(9)].map((_, i) => <Skeleton key={i} />);
 
   return (
     <>
@@ -108,18 +109,20 @@ const Home = () => {
           <span className="catalog__count text__secondary">{items.length} games</span>
         </div>
         {status === 'error' && (
-          <p className="text__main text__center">
+          <p className="text__main text__center wrapper_content">
             Games catalog could not be loaded. Please try again later.
           </p>
         )}
-        <div className="catalog__main">
-          <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
-          <div className="catalog__content">
-            {status !== 'error' && <Sort />}
-            <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
-            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+        {status !== 'error' && (
+          <div className="catalog__main">
+            <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
+            <div className="catalog__content">
+              <Sort />
+              <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
+              <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

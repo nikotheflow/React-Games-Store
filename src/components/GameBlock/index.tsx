@@ -3,7 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addItem, selectCartItem } from '../../redux/slices/cartSlice';
 
-function GameBlock({ id, imageUrl, title, price, version, genres }) {
+type GameBlockProps = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  price: number;
+  version: number[];
+  genres: string[];
+};
+
+const GameBlock: React.FC<GameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
   const dispatch = useDispatch();
   const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
@@ -57,6 +66,6 @@ function GameBlock({ id, imageUrl, title, price, version, genres }) {
       </div>
     </div>
   );
-}
+};
 
 export default GameBlock;

@@ -20,24 +20,6 @@
       }
     }
 
-    &:last-child {
-      margin-left: auto;
-
-      &:hover a {
-        color: #999;
-        font-weight: 700;
-      }
-    }
-
-    &:first-child {
-      margin-right: auto;
-
-      &:hover a {
-        color: #999;
-        font-weight: 700;
-      }
-    }
-
     a {
       padding: 0 40px;
       height: 45px;
@@ -57,6 +39,23 @@
       a {
         color: #383634;
         font-weight: 700;
+      }
+    }
+
+    .next {
+      margin-left: auto;
+    }
+
+    .previous {
+      margin-right: auto;
+    }
+
+    .previous,
+    .next,
+    .break {
+      &:hover a {
+        color: #999;
+        font-weight: 400;
       }
     }
   }

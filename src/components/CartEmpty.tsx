@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import emptyImg from '../assets/img/marioDeath.gif';
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
   return (
     <div className="wrapper">
       <div className="cart">

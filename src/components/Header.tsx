@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
-import Search from '../components/Search';
+import Search from './Search';
 
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
 import { selectCart } from '../redux/slices/cartSlice';
 
-function Header() {
+const Header: React.FC = () => {
   const { totalPrice, totalCount } = useSelector(selectCart);
   const location = useLocation();
 

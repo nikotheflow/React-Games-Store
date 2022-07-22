@@ -1,8 +1,13 @@
-function Filters({ onChangeFilters }) {
+type FiltersProps = {
+  value: string;
+  onChangeFilters: any;
+};
+
+const Filters: React.FC<FiltersProps> = ({ value, onChangeFilters }) => {
   const genres = ['Action', 'Adventure', "Beat'em up", 'Platformer', 'RPG'];
 
-  const applyFilters = (i) => {
-    onChangeFilters(i);
+  const applyFilters = (genre: string) => {
+    onChangeFilters(genre);
   };
 
   return (
@@ -24,6 +29,6 @@ function Filters({ onChangeFilters }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Filters;
