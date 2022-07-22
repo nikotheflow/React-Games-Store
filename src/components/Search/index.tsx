@@ -11,7 +11,7 @@ const Search: React.FC = () => {
   const [inputValue, setInputValue] = React.useState<string>('');
   const refSearch = React.useRef<HTMLInputElement>(null);
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
     updateSearchValue(event.target.value);
   };

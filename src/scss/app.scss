@@ -237,7 +237,10 @@ body {
 }
 
 .filters {
+  display: grid;
+  grid-gap: 20px;
   margin-bottom: auto;
+
   &__title {
     margin-bottom: 6px;
   }
