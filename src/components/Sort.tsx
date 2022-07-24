@@ -1,17 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSort, selectSortType } from '../redux/slices/filterSlice';
-
-type SortItem = {
-  name: string;
-  designation: string;
-};
+import { setSort, selectSortType, TSortItem } from '../redux/slices/filterSlice';
 
 type PopupClick = MouseEvent & {
   path: Node[];
 };
 
-export const sortTypes: SortItem[] = [
+export const sortTypes: TSortItem[] = [
   { name: 'Name (A - Z)', designation: 'title' },
   { name: 'Name (Z - A)', designation: '-title' },
   { name: 'Price (low to high)', designation: 'price' },
@@ -25,7 +20,7 @@ const Sort: React.FC = () => {
 
   const [isOpen, setOpen] = React.useState(false);
 
-  const applySort = (obj: SortItem) => {
+  const applySort = (obj: TSortItem) => {
     dispatch(setSort(obj));
     setOpen(false);
   };

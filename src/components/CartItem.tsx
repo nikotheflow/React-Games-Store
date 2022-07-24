@@ -19,6 +19,9 @@ const CartItem: React.FC<CartItemProps> = ({ id, imageUrl, title, price, version
     id,
     price,
     version,
+    imageUrl,
+    title,
+    count,
   };
 
   const onClickPlus = () => {

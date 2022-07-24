@@ -31,7 +31,7 @@ const Filters: React.FC<FiltersProps> = ({ value, onChangeFilters }) => {
         </ul>
       </div>
       <div className="wrapper_content">
-        <p className="filters__title text__title">Devlopers:</p>
+        <p className="filters__title text__title">Developers:</p>
         <ul className="filters__list">
           {devlopers.map((devloper, i) => (
             <li className="filters__item" key={i}>

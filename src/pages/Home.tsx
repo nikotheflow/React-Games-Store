@@ -2,8 +2,9 @@ import React from 'react';
 
 import qs from 'qs';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAppDispatch } from '../redux/store';
 
 import {
   setActiveGenres,
@@ -21,7 +22,7 @@ import { sortTypes } from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
@@ -45,7 +46,6 @@ const Home = () => {
     const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
 
     dispatch(
-      // @ts-ignore
       fetchGames({
         currentPage,
         genres,
@@ -61,12 +61,15 @@ const Home = () => {
       const params = qs.parse(window.location.search.substring(1));
       const sortType = sortTypes.find((obj) => obj.designation === params.sortBy);
 
+      console.log('params:', params, 'sortType:', sortType);
+
       dispatch(
         setFilters({
           ...params,
           sortType,
         }),
       );
+
       isSearch.current = true;
     }
   }, []);

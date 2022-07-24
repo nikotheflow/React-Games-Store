@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItem, selectCartItem } from '../../redux/slices/cartSlice';
+import { addItem, selectCartItem, TCartItem } from '../../redux/slices/cartSlice';
 
-type GameBlockProps = {
+type TGameBlockProps = {
   id: string;
   imageUrl: string;
   title: string;
@@ -12,7 +12,7 @@ type GameBlockProps = {
   genres: string[];
 };
 
-const GameBlock: React.FC<GameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
+const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
   const dispatch = useDispatch();
   const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
@@ -22,12 +22,13 @@ const GameBlock: React.FC<GameBlockProps> = ({ id, imageUrl, title, price, versi
   const itemCount = cartItem ? cartItem.count : 0;
 
   const onClickAdd = () => {
-    const item = {
+    const item: TCartItem = {
       id,
       imageUrl,
       title,
       price,
       version: versionNames[activeVersion],
+      count: 0,
     };
 
     dispatch(addItem(item));
