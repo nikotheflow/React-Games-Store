@@ -1,26 +1,26 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSort, selectSortType, TSortItem } from '../redux/slices/filterSlice';
+import { setSort, selectSortItem, TSort, SortPropertyEnum } from '../redux/slices/filterSlice';
 
 type PopupClick = MouseEvent & {
   path: Node[];
 };
 
-export const sortTypes: TSortItem[] = [
-  { name: 'Name (A - Z)', designation: 'title' },
-  { name: 'Name (Z - A)', designation: '-title' },
-  { name: 'Price (low to high)', designation: 'price' },
-  { name: 'Price (high to low)', designation: '-price' },
+export const sortList: TSort[] = [
+  { title: 'Name (A - Z)', property: SortPropertyEnum.TITLE_ASC },
+  { title: 'Name (Z - A)', property: SortPropertyEnum.TITLE_DESC },
+  { title: 'Price (low to high)', property: SortPropertyEnum.PRICE_ASC },
+  { title: 'Price (high to low)', property: SortPropertyEnum.PRICE_DESC },
 ];
 
 const Sort: React.FC = () => {
-  const activeSort = useSelector(selectSortType);
+  const activeSort = useSelector(selectSortItem);
   const dispatch = useDispatch();
   const refSort = React.useRef<HTMLDivElement>(null);
 
   const [isOpen, setOpen] = React.useState(false);
 
-  const applySort = (obj: TSortItem) => {
+  const applySort = (obj: TSort) => {
     dispatch(setSort(obj));
     setOpen(false);
   };
@@ -44,7 +44,7 @@ const Sort: React.FC = () => {
       <span className="text__secondary">
         Sort by:{' '}
         <span className="sort__link" onClick={() => setOpen(!isOpen)}>
-          {activeSort.name}
+          {activeSort.title}
         </span>
       </span>
       <span className="text__secondary">
@@ -52,14 +52,14 @@ const Sort: React.FC = () => {
       </span>
       {isOpen && (
         <ul className="sort__popup">
-          {sortTypes.map((obj, i) => (
+          {sortList.map((obj, i) => (
             <li
               className={
-                activeSort.name === obj.name ? 'sort__popup-item active' : 'sort__popup-item'
+                activeSort.title === obj.title ? 'sort__popup-item active' : 'sort__popup-item'
               }
               key={i}
               onClick={() => applySort(obj)}>
-              {obj.name}
+              {obj.title}
             </li>
           ))}
         </ul>

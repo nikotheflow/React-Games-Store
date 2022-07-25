@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
+import { TSort } from './filterSlice';
 
 export type TFetchGamesArgs = {
   currentPage: number;
   genres: string;
   title: string;
-  sort: string;
+  sortBy: string;
   order: string;
 };
 
@@ -22,9 +23,9 @@ type TGame = {
 export const fetchGames = createAsyncThunk<TGame[], TFetchGamesArgs>(
   'games/fetchGamesStatus',
   async (params) => {
-    const { currentPage, genres, title, sort, order } = params;
+    const { currentPage, genres, title, sortBy, order } = params;
     const { data } = await axios.get<TGame[]>(
-      `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=8${genres}${sort}${order}${title}`,
+      `https://6299c5107b866a90ec42181e.mockapi.io/items?page=${currentPage}&limit=8${genres}${sortBy}${order}${title}`,
     );
     return data;
   },

@@ -12,13 +12,13 @@ import {
   setFilters,
   selectFilter,
 } from '../redux/slices/filterSlice';
-import { fetchGames, selectGamesData } from '../redux/slices/gamesSlice';
+import { fetchGames, selectGamesData, TFetchGamesArgs } from '../redux/slices/gamesSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
 import Sort from '../components/Sort';
-import { sortTypes } from '../components/Sort';
+import { sortList } from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
@@ -28,8 +28,8 @@ const Home = () => {
   const isMounted = React.useRef(false);
 
   const { items, status } = useSelector(selectGamesData);
-  const { searchValue, activeGenres, sortType, currentPage } = useSelector(selectFilter);
-  const activeSort = sortType.designation;
+  const { searchValue, activeGenres, sortItem, currentPage } = useSelector(selectFilter);
+  const activeSort = sortItem.property;
 
   const onChangeFilters = (genre: string) => {
     dispatch(setActiveGenres(genre));
@@ -42,7 +42,7 @@ const Home = () => {
   const getGames = async () => {
     const genres = activeGenres ? `&genres=${activeGenres}` : '';
     const title = searchValue ? `&title=${searchValue}` : '';
-    const sort = '&sortBy=' + activeSort.replace('-', '');
+    const sortBy = '&sortBy=' + activeSort.replace('-', '');
     const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
 
     dispatch(
@@ -50,7 +50,7 @@ const Home = () => {
         currentPage,
         genres,
         title,
-        sort,
+        sortBy,
         order,
       }),
     );
@@ -58,15 +58,15 @@ const Home = () => {
 
   React.useEffect(() => {
     if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      const sortType = sortTypes.find((obj) => obj.designation === params.sortBy);
-
-      console.log('params:', params, 'sortType:', sortType);
+      const params = qs.parse(window.location.search.substring(1)) as unknown as TFetchGamesArgs;
+      const sortItem = sortList.find((obj) => obj.property === params.sortBy);
 
       dispatch(
         setFilters({
-          ...params,
-          sortType,
+          searchValue: params.title,
+          activeGenres: params.genres,
+          currentPage: params.currentPage,
+          sortItem: sortItem ? sortItem : sortList[0],
         }),
       );
 
@@ -79,15 +79,15 @@ const Home = () => {
       const queryString = qs.stringify({
         currentPage,
         activeGenres,
-        sortBy: sortType.designation,
-        order: sortType.designation[0] === '-' ? 'desc' : 'asc',
+        sortBy: sortItem.property,
+        order: sortItem.property[0] === '-' ? 'desc' : 'asc',
       });
 
       navigate(`?${queryString}`);
     }
 
     isMounted.current = true;
-  }, [currentPage, sortType, activeGenres]);
+  }, [currentPage, sortItem, activeGenres]);
 
   React.useEffect(() => {
     if (!isSearch.current) {
