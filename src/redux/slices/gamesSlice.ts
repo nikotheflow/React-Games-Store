@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
-import { TSort } from './filterSlice';
 
 export type TFetchGamesArgs = {
   currentPage: number;
@@ -11,7 +10,7 @@ export type TFetchGamesArgs = {
   order: string;
 };
 
-type TGame = {
+export type TGame = {
   id: string;
   imageUrl: string;
   title: string;

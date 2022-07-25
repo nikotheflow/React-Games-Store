@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { addItem, selectCartItem, TCartItem } from '../../redux/slices/cartSlice';
 
@@ -37,7 +38,9 @@ const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, vers
   return (
     <div className="game">
       <img className="game__img" src={imageUrl} alt="game"></img>
-      <h3 className="game__title">{title}</h3>
+      <Link className="game__link" to={`/game/${id}`}>
+        <h3 className="game__title">{title}</h3>
+      </Link>
       <div className="game__info">
         <p className="game__text">Nintendo</p>
         <p className="game__text">{genres.join(', ')}</p>

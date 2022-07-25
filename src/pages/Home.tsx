@@ -12,13 +12,12 @@ import {
   setFilters,
   selectFilter,
 } from '../redux/slices/filterSlice';
-import { fetchGames, selectGamesData, TFetchGamesArgs } from '../redux/slices/gamesSlice';
+import { fetchGames, selectGamesData, TFetchGamesArgs, TGame } from '../redux/slices/gamesSlice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
-import Sort from '../components/Sort';
-import { sortList } from '../components/Sort';
+import Sort, { sortList } from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
@@ -97,12 +96,12 @@ const Home = () => {
     isSearch.current = false;
   }, [currentPage, activeGenres, searchValue, activeSort]);
 
-  const games = items.map((obj: any) => (
-    <Link to={`/game/${obj.id}`} key={obj.id}>
-      <GameBlock {...obj} />
-    </Link>
+  const games = items.map((obj: TGame) => (
+    //<Link to={`/game/${obj.id}`} >
+    <GameBlock {...obj} key={obj.id} />
+    //</Link>
   ));
-  const skeletons = [...new Array(9)].map((_, i) => <Skeleton key={i} />);
+  const skeletons = [...new Array(8)].map((_, i) => <Skeleton key={i} />);
 
   return (
     <>
