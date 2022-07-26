@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className="wrapper">
-      <div className="cart">
+      <div className="cart wrapper_content">
         <div className="cart__header">
           <h2 className="cart__title">Cart</h2>
           <button className="cart__clear-btn btn btn_text" onClick={onClickClear}>

@@ -448,7 +448,7 @@ body {
 .game-page {
   width: 100%;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 3fr 2fr;
   grid-gap: 20px;
 
   &__title {
@@ -518,13 +518,8 @@ body {
 }
 
 .cart {
-  background-color: white;
   padding: 40px;
-  border-radius: 8px;
-  max-width: 920px;
-  margin: 20px auto;
   display: grid;
-  grid-template-rows: 1fr;
   row-gap: 20px;
   display: flex;
   flex-direction: column;

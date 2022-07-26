@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import qs from 'qs';
 
 import { useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../redux/store';
 
 import {
@@ -30,9 +30,9 @@ const Home = () => {
   const { searchValue, activeGenres, sortItem, currentPage } = useSelector(selectFilter);
   const activeSort = sortItem.property;
 
-  const onChangeFilters = (genre: string) => {
+  const onChangeFilters = useCallback((genre: string) => {
     dispatch(setActiveGenres(genre));
-  };
+  }, []);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));

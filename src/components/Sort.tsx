@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSort, selectSortItem, TSort, SortPropertyEnum } from '../redux/slices/filterSlice';
 
@@ -13,17 +13,17 @@ export const sortList: TSort[] = [
   { title: 'Price (high to low)', property: SortPropertyEnum.PRICE_DESC },
 ];
 
-const Sort: React.FC = () => {
+const Sort: React.FC = React.memo(() => {
   const activeSort = useSelector(selectSortItem);
   const dispatch = useDispatch();
   const refSort = React.useRef<HTMLDivElement>(null);
 
   const [isOpen, setOpen] = React.useState(false);
 
-  const applySort = (obj: TSort) => {
+  const applySort = useCallback((obj: TSort) => {
     dispatch(setSort(obj));
     setOpen(false);
-  };
+  }, []);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -66,6 +66,6 @@ const Sort: React.FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;
