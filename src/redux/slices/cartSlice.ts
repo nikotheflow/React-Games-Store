@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
+import { getCartFromLS } from '../../utils/getCartFromLS';
+import { calcTotalPrice } from '../../utils/calcTotalPrice';
+import { calcTotalCount } from '../../utils/calcTotalCount';
+
 export type TCartItem = {
   id: string;
   imageUrl: string;
@@ -11,15 +15,17 @@ export type TCartItem = {
 };
 
 interface ICartSliceState {
+  items: TCartItem[];
   totalPrice: number;
   totalCount: number;
-  items: TCartItem[];
 }
 
+const { items, totalPrice, totalCount } = getCartFromLS();
+
 const initialState: ICartSliceState = {
-  totalPrice: Number(0),
-  totalCount: Number(0),
-  items: [],
+  items,
+  totalPrice,
+  totalCount,
 };
 
 const cartSlice = createSlice({
@@ -37,10 +43,8 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, count: 1 });
       }
 
-      state.totalPrice = +state.items
-        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
-        .toFixed(2);
-      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
+      state.totalPrice = calcTotalPrice(state.items);
+      state.totalCount = calcTotalCount(state.items);
 
       state.items.sort((a, b) => +a.id - +b.id);
     },
@@ -54,10 +58,8 @@ const cartSlice = createSlice({
         findItem.count--;
       }
 
-      state.totalPrice = +state.items
-        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
-        .toFixed(2);
-      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
+      state.totalPrice = calcTotalPrice(state.items);
+      state.totalCount = calcTotalCount(state.items);
     },
 
     removeItem(state, action: PayloadAction<TCartItem>) {
@@ -65,16 +67,14 @@ const cartSlice = createSlice({
         return obj.id !== action.payload.id || obj.version !== action.payload.version;
       });
 
-      state.totalPrice = +state.items
-        .reduce((sum, currentItem) => sum + currentItem.price * currentItem.count, 0)
-        .toFixed(2);
-      state.totalCount = state.items.reduce((sum, currentItem) => sum + currentItem.count, 0);
+      state.totalPrice = calcTotalPrice(state.items);
+      state.totalCount = calcTotalCount(state.items);
     },
 
     clearCart(state) {
       state.items = [];
-      state.totalCount = 0;
       state.totalPrice = 0;
+      state.totalCount = 0;
     },
   },
 });

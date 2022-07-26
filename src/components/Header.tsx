@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -8,8 +9,18 @@ import cartImg from '../assets/img/cart.svg';
 import { selectCart } from '../redux/slices/cartSlice';
 
 const Header: React.FC = () => {
-  const { totalPrice, totalCount } = useSelector(selectCart);
+  const { totalPrice, totalCount, items } = useSelector(selectCart);
   const location = useLocation();
+  const isMounted = useRef(false);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+
+    isMounted.current = true;
+  }, [items]);
 
   return (
     <header className="header">
@@ -41,6 +52,6 @@ const Header: React.FC = () => {
       )}
     </header>
   );
-}
+};
 
 export default Header;
