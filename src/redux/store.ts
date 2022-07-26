@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
-import filter from './slices/filterSlice';
-import cart from './slices/cartSlice';
-import games from './slices/gamesSlice';
+import filter from './filter/slice';
+import cart from './cart/slice';
+import games from './games/slice';
 
 export const store = configureStore({
   reducer: { filter, cart, games },

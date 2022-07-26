@@ -6,13 +6,12 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../redux/store';
 
-import {
-  setActiveGenres,
-  setCurrentPage,
-  setFilters,
-  selectFilter,
-} from '../redux/slices/filterSlice';
-import { fetchGames, selectGamesData, TFetchGamesArgs, TGame } from '../redux/slices/gamesSlice';
+import { fetchGames } from '../redux/games/asyncActions';
+import { selectGamesData } from '../redux/games/selectors';
+import { TFetchGamesArgs, TGame } from '../redux/games/types';
+
+import { selectFilter } from '../redux/filter/selectors';
+import { setActiveGenres, setCurrentPage, setFilters } from '../redux/filter/slice';
 
 import Filters from '../components/Filters';
 import GameBlock from '../components/GameBlock';
@@ -96,11 +95,7 @@ const Home = () => {
     isSearch.current = false;
   }, [currentPage, activeGenres, searchValue, activeSort]);
 
-  const games = items.map((obj: TGame) => (
-    //<Link to={`/game/${obj.id}`} >
-    <GameBlock {...obj} key={obj.id} />
-    //</Link>
-  ));
+  const games = items.map((obj: TGame) => <GameBlock {...obj} key={obj.id} />);
   const skeletons = [...new Array(8)].map((_, i) => <Skeleton key={i} />);
 
   return (

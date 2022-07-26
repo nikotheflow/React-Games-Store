@@ -1,6 +1,9 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSort, selectSortItem, TSort, SortPropertyEnum } from '../redux/slices/filterSlice';
+
+import { selectSortItem } from '../redux/filter/selectors';
+import { setSort } from '../redux/filter/slice';
+import { SortPropertyEnum, TSort } from '../redux/filter/types';
 
 type PopupClick = MouseEvent & {
   path: Node[];
@@ -51,7 +54,7 @@ const Sort: React.FC = React.memo(() => {
         Show by: <b>10</b> 20 30
       </span>
       {isOpen && (
-        <ul className="sort__popup">
+        <ul className="sort__popup wrapper_content">
           {sortList.map((obj, i) => (
             <li
               className={

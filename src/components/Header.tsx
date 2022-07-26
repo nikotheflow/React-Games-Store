@@ -6,7 +6,7 @@ import Search from './Search';
 
 import logoImg from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.svg';
-import { selectCart } from '../redux/slices/cartSlice';
+import { selectCart } from '../redux/cart/selectors';
 
 const Header: React.FC = () => {
   const { totalPrice, totalCount, items } = useSelector(selectCart);

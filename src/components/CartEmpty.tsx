@@ -11,10 +11,10 @@ const CartEmpty: React.FC = () => {
         <h2 className="cart__title">Your cart is empty!</h2>
         <div className="cart__text-block">
           <p className="text__main">
-            Before proceed to checkout you must add some products to your shipping cart.
+            Before proceed to checkout you must add some products to the shipping cart.
           </p>
           <p className="text__main">
-            You will find a lot of interesting products on our shop page.
+            You will find a lot of interesting products on the shop page.
           </p>
         </div>
         <Link to="/">

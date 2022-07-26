@@ -2,7 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { addItem, selectCartItem, TCartItem } from '../../redux/slices/cartSlice';
+import { selectCartItem } from '../../redux/cart/selectors';
+import { addItem } from '../../redux/cart/slice';
+import { TCartItem } from '../../redux/cart/types';
 
 type TGameBlockProps = {
   id: string;
