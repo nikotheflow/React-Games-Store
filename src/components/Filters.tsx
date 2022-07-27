@@ -8,7 +8,7 @@ type FiltersProps = {
 const genres = ['Action', 'Adventure', "Beat'em up", 'Platformer', 'RPG'];
 const devlopers = ['Nintendo', 'Square', 'Capcom', 'Midway', 'Rare', 'Konami', 'Quintet', 'Amccus'];
 
-const Filters: React.FC<FiltersProps> = React.memo(({ onChangeFilters }) => {
+export const Filters: React.FC<FiltersProps> = React.memo(({ onChangeFilters }) => {
   const applyFilters = (genre: string) => {
     onChangeFilters(genre);
   };
@@ -52,5 +52,3 @@ const Filters: React.FC<FiltersProps> = React.memo(({ onChangeFilters }) => {
     </div>
   );
 });
-
-export default Filters;

@@ -2,7 +2,7 @@ import styles from './NotFoundBlock.module.scss';
 
 import emptyImg from '../../assets/img/marioDeath.gif';
 
-const NotFoundBlock: React.FC = () => {
+export const NotFoundBlock: React.FC = () => {
   return (
     <div className={styles.root}>
       <img src={emptyImg} width="200" height="200" alt="mario death"></img>
@@ -10,5 +10,3 @@ const NotFoundBlock: React.FC = () => {
     </div>
   );
 };
-
-export default NotFoundBlock;

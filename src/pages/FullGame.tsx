@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Loading from '../components/Loading';
+
+import {Loading} from '../components';
 
 const FullGame: React.FC = () => {
   const [game, setGame] = React.useState<{

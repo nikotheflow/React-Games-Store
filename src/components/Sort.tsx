@@ -16,7 +16,7 @@ export const sortList: TSort[] = [
   { title: 'Price (high to low)', property: SortPropertyEnum.PRICE_DESC },
 ];
 
-const Sort: React.FC = React.memo(() => {
+export const Sort: React.FC = React.memo(() => {
   const activeSort = useSelector(selectSortItem);
   const dispatch = useDispatch();
   const refSort = React.useRef<HTMLDivElement>(null);
@@ -70,5 +70,3 @@ const Sort: React.FC = React.memo(() => {
     </div>
   );
 });
-
-export default Sort;

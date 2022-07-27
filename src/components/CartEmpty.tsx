@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import emptyImg from '../assets/img/marioDeath.gif';
 
-const CartEmpty: React.FC = () => {
+export const CartEmpty: React.FC = () => {
   return (
     <div className="wrapper">
       <div className="cart wrapper_content">
@@ -24,5 +24,3 @@ const CartEmpty: React.FC = () => {
     </div>
   );
 };
-
-export default CartEmpty;

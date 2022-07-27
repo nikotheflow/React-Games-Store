@@ -10,7 +10,14 @@ type TCartItemProps = {
   count: number;
 };
 
-const CartItem: React.FC<TCartItemProps> = ({ id, imageUrl, title, price, version, count }) => {
+export const CartItem: React.FC<TCartItemProps> = ({
+  id,
+  imageUrl,
+  title,
+  price,
+  version,
+  count,
+}) => {
   const dispatch = useDispatch();
   console.log({ id, imageUrl, title, price, version, count });
 
@@ -92,5 +99,3 @@ const CartItem: React.FC<TCartItemProps> = ({ id, imageUrl, title, price, versio
     </div>
   );
 };
-
-export default CartItem;

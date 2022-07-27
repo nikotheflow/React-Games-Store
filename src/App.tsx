@@ -1,16 +1,17 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Loading from './components/Loading';
 
 import MainLayout from './layouts/MainLayout';
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
+import { Loading } from './components';
+
 import './scss/app.scss';
 
-const Cart = React.lazy(() => import('./pages/Cart'));
-const FullGame = React.lazy(() => import('./pages/FullGame'));
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
+const FullGame = React.lazy(() => import(/* webpackChunkName: "FullGame" */ './pages/FullGame'));
 
 function App() {
   return (

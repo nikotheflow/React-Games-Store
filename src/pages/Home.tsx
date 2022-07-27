@@ -13,12 +13,7 @@ import { TFetchGamesArgs, TGame } from '../redux/games/types';
 import { selectFilter } from '../redux/filter/selectors';
 import { setActiveGenres, setCurrentPage, setFilters } from '../redux/filter/slice';
 
-import Filters from '../components/Filters';
-import GameBlock from '../components/GameBlock';
-import Skeleton from '../components/GameBlock/Skeleton';
-import Sort, { sortList } from '../components/Sort';
-import Pagination from '../components/Pagination';
-import Loading from '../components/Loading';
+import { Filters, GameBlock, Skeleton, Sort, Pagination, sortList } from '../components/';
 
 const Home = () => {
   const dispatch = useAppDispatch();

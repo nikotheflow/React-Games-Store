@@ -15,7 +15,7 @@ type TGameBlockProps = {
   genres: string[];
 };
 
-const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
+export const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
   const dispatch = useDispatch();
   const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
@@ -73,5 +73,3 @@ const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, vers
     </div>
   );
 };
-
-export default GameBlock;

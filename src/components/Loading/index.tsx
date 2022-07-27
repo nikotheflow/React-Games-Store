@@ -2,7 +2,7 @@ import styles from './Loading.module.scss';
 
 import loadingImg from '../../assets/img/marioRun.gif';
 
-const Loading: React.FC = () => {
+export const Loading: React.FC = () => {
   return (
     <div className={styles.root}>
       <img src={loadingImg} alt="loading" width="32" />
@@ -10,5 +10,3 @@ const Loading: React.FC = () => {
     </div>
   );
 };
-
-export default Loading;
