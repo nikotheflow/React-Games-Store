@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../components/Loading';
 
 const FullGame: React.FC = () => {
   const [game, setGame] = React.useState<{
@@ -27,7 +28,7 @@ const FullGame: React.FC = () => {
   }, []);
 
   if (!game) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

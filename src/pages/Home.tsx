@@ -18,6 +18,7 @@ import GameBlock from '../components/GameBlock';
 import Skeleton from '../components/GameBlock/Skeleton';
 import Sort, { sortList } from '../components/Sort';
 import Pagination from '../components/Pagination';
+import Loading from '../components/Loading';
 
 const Home = () => {
   const dispatch = useAppDispatch();
