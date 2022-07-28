@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectShowItem, selectSortItem } from '../redux/filter/selectors';
-import { setShow, setSort } from '../redux/filter/slice';
+import { setCurrentPage, setShow, setSort } from '../redux/filter/slice';
 import { SortPropertyEnum, SortOrderEnum, TSort } from '../redux/filter/types';
 
 type PopupClick = MouseEvent & {
@@ -20,20 +20,21 @@ export const showList: number[] = [4, 8, 12];
 
 export const View: React.FC = React.memo(() => {
   const activeSort = useSelector(selectSortItem);
+  const activeShow = useSelector(selectShowItem);
   const dispatch = useDispatch();
   const refSort = React.useRef<HTMLDivElement>(null);
-
-  const activeShow = useSelector(selectShowItem);
 
   const [isOpen, setOpen] = React.useState(false);
 
   const applySort = useCallback((obj: TSort) => {
     dispatch(setSort(obj));
     setOpen(false);
+    dispatch(setCurrentPage(1));
   }, []);
 
   const applyShow = (num: number) => {
     dispatch(setShow(num));
+    dispatch(setCurrentPage(1));
   };
 
   React.useEffect(() => {

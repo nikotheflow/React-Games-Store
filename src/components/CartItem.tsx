@@ -66,7 +66,7 @@ export const CartItem: React.FC<TCartItemProps> = ({
           </svg>
         </button>
 
-        <span className="cart__item-counter-number text__primary">{count}</span>
+        <span className="cart__item-counter-number text_primary">{count}</span>
 
         <button className="cart__item-counter-btn btn btn_round" onClick={onClickPlus}>
           <svg
@@ -81,7 +81,7 @@ export const CartItem: React.FC<TCartItemProps> = ({
         </button>
       </div>
 
-      <span className="cart__item-price text__primary">${(count * price).toFixed(2)}</span>
+      <span className="cart__item-price text_primary">${(count * price).toFixed(2)}</span>
       <button
         className="cart__item-delete-btn btn btn_round btn_round-secondary"
         onClick={onClickRemove}>

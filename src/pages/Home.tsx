@@ -22,7 +22,8 @@ const Home: React.FC = () => {
   const isMounted = React.useRef(false);
 
   const { items, status } = useSelector(selectGamesData);
-  const { searchValue, activeGenres, sortItem, currentPage, showItem } = useSelector(selectFilter);
+  const { searchValue, activeGenres, activeDeveloper, sortItem, currentPage, showItem } =
+    useSelector(selectFilter);
 
   const onChangeFilters = useCallback((genre: string) => {
     dispatch(setActiveGenres(genre));
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
 
   const getGames = async () => {
     const genres = activeGenres ? `&genres=${activeGenres}` : '';
+    const developer = activeDeveloper ? `&developers=${activeDeveloper}` : '';
     const title = searchValue ? `&title=${searchValue}` : '';
     const sortBy = '&sortBy=' + sortItem.property;
     const order = '&order=' + sortItem.order;
@@ -44,6 +46,7 @@ const Home: React.FC = () => {
         currentPage,
         limit,
         genres,
+        developer,
         sortBy,
         order,
         title,
@@ -62,6 +65,7 @@ const Home: React.FC = () => {
         setFilters({
           searchValue: params.title,
           activeGenres: params.genres,
+          activeDeveloper: params.developer,
           currentPage: params.currentPage,
           sortItem: sortItem ? sortItem : sortList[0],
           showItem: params.limit,
@@ -76,16 +80,15 @@ const Home: React.FC = () => {
     if (isMounted.current) {
       const queryString = qs.stringify({
         currentPage,
-        activeGenres,
+        limit: showItem,
         sortBy: sortItem.property,
         order: sortItem.order,
       });
-
       navigate(`?${queryString}`);
     }
 
     isMounted.current = true;
-  }, [currentPage, sortItem, activeGenres]);
+  }, [currentPage, sortItem, showItem]);
 
   React.useEffect(() => {
     if (!isSearch.current) {
@@ -93,7 +96,7 @@ const Home: React.FC = () => {
     }
 
     isSearch.current = false;
-  }, [currentPage, activeGenres, searchValue, sortItem, showItem]);
+  }, [currentPage, sortItem, showItem, activeGenres, activeDeveloper, searchValue]);
 
   const games = items.map((obj: TGame) => <GameBlock {...obj} key={obj.id} />);
   const skeletons = [...new Array(showItem)].map((_, i) => <Skeleton key={i} />);
@@ -112,7 +115,7 @@ const Home: React.FC = () => {
         )}
         {status !== 'error' && (
           <div className="catalog__main">
-            <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
+            <Filters />
             <div className="catalog__content">
               <View />
               <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>

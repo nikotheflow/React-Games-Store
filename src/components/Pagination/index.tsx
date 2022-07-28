@@ -13,9 +13,12 @@ type PaginationProps = {
 
 export const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) => {
   const { totalGames, items } = useSelector(selectGamesData);
-  const { searchValue, showItem } = useSelector(selectFilter);
+  const { searchValue, showItem, activeGenres, activeDeveloper } = useSelector(selectFilter);
 
-  const pageCount = searchValue ? items.length / showItem : totalGames / showItem;
+  const pageCount =
+    searchValue || activeGenres || activeDeveloper
+      ? items.length / showItem
+      : totalGames / showItem;
 
   return (
     <ReactPaginate

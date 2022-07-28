@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
 import { clearCart } from '../redux/cart/slice';
 
-import {CartItem, CartEmpty} from '../components';
+import { CartItem, CartEmpty } from '../components';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,14 +36,14 @@ const Cart: React.FC = () => {
           ))}
         </div>
         <div className="cart__total">
-          <span className="text__primary">Total: {totalCount} games</span>
-          <span className="text__primary">Order price: ${totalPrice}</span>
+          <span className="text_primary">Total: {totalCount} games</span>
+          <span className="text_primary">Order price: ${totalPrice}</span>
         </div>
         <div className="cart__buttons">
           <Link to="/">
-            <button className="btn btn_outlined">Continue shopping</button>
+            <button className="btn btn_outlined btn_color_white">Continue shopping</button>
           </Link>
-          <button className="btn btn_contained">Proceed to checkout</button>
+          <button className="btn btn_contained btn_color_red">Proceed to checkout</button>
         </div>
       </div>
     </div>

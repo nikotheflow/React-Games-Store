@@ -18,7 +18,7 @@ export const CartEmpty: React.FC = () => {
           </p>
         </div>
         <Link to="/">
-          <button className="btn btn_outlined">Return to shop</button>
+          <button className="btn btn_outlined btn_color_white">Return to shop</button>
         </Link>
       </div>
     </div>

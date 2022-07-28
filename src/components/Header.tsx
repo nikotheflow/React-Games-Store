@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
         <div className="header__right">
           <Search />
           <Link to="/cart">
-            <button className="btn btn_contained">
+            <button className="btn btn_contained btn_color_red">
               <span>${totalPrice}</span>
               <div className="vertical-divider"></div>
               <div className="cart-btn__counter">

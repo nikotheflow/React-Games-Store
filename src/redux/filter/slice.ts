@@ -5,6 +5,7 @@ import { IFilterSliceState, TSort } from './types';
 const initialState: IFilterSliceState = {
   searchValue: '',
   activeGenres: '',
+  activeDeveloper: '',
   sortItem: sortList[0],
   showItem: showList[1],
   currentPage: 1,
@@ -20,6 +21,9 @@ const filterSlice = createSlice({
     setActiveGenres(state, action: PayloadAction<string>) {
       state.activeGenres = action.payload;
     },
+    setActiveDeveloper(state, action: PayloadAction<string>) {
+      state.activeDeveloper = action.payload;
+    },
     setSort(state, action: PayloadAction<TSort>) {
       state.sortItem = action.payload;
     },
@@ -31,13 +35,21 @@ const filterSlice = createSlice({
     },
     setFilters(state, action: PayloadAction<IFilterSliceState>) {
       state.activeGenres = action.payload.activeGenres;
+      state.activeDeveloper = action.payload.activeDeveloper;
       state.sortItem = action.payload.sortItem;
       state.currentPage = action.payload.currentPage;
     },
   },
 });
 
-export const { setSearchValue, setActiveGenres, setSort, setShow, setCurrentPage, setFilters } =
-  filterSlice.actions;
+export const {
+  setSearchValue,
+  setActiveGenres,
+  setActiveDeveloper,
+  setSort,
+  setShow,
+  setCurrentPage,
+  setFilters,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

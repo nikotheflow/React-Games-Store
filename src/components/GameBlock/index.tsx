@@ -15,7 +15,14 @@ type TGameBlockProps = {
   genres: string[];
 };
 
-export const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, price, version, genres }) => {
+export const GameBlock: React.FC<TGameBlockProps> = ({
+  id,
+  imageUrl,
+  title,
+  price,
+  version,
+  genres,
+}) => {
   const dispatch = useDispatch();
   const versionNames = ['Physical', 'Digital'];
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
@@ -49,7 +56,7 @@ export const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, pric
       </div>
 
       <ul className="game__options">
-        {version.map((versionId, i) => (
+        {version.map((versionId) => (
           <li
             className={activeVersion === versionId ? 'game__option active' : 'game__option'}
             key={versionId}
@@ -59,7 +66,7 @@ export const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, pric
         ))}
       </ul>
       <div className="game__buy-block">
-        <button className="game__add-btn btn_contained btn" onClick={onClickAdd}>
+        <button className="game__add-btn btn btn_contained btn_color_red" onClick={onClickAdd}>
           Add{' '}
           {itemCount > 0 &&
             (itemCount < 100 ? (
@@ -68,7 +75,7 @@ export const GameBlock: React.FC<TGameBlockProps> = ({ id, imageUrl, title, pric
               <span className="game__add-btn-count">99</span>
             ))}
         </button>
-        <span className="text__primary">${(+price).toFixed(2)}</span>
+        <span className="text_primary">${(+price).toFixed(2)}</span>
       </div>
     </div>
   );

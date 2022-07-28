@@ -1,0 +1,167 @@
+[
+  {
+    "id": "1",
+    "imageUrl": "./img/1.jpg",
+    "title": "Super Mario World",
+    "version": [0, 1],
+    "price": 44.44,
+    "genres": ["Platformer"],
+    "developers": ["Nintendo"],
+    "year": 1991,
+    "description": "How do you follow up a masterpiece like Super Mario Bros. 3? That question no doubt lingered in the minds of many as the launch of the SNES approached. Super Mario World was given the impossible task of attempting to perfect platforming perfection -- finding power-ups, level designs, graphics, and music that would outdo or stand alongside what most consider to be the best NES game ever. Somehow, Nintendo managed to do just that. Mario World doesn't reinvent platform gaming, but it does find a way to make it seem fresh again, introducing ideas like Yoshi, expanding the Mushroom Kingdom's zany cast of characters and blowing our minds with some truly excellent visuals and audio. Upon its debut, the SNES managed to make the impossible somehow possible. That's mighty impressive."
+  },
+  {
+    "id": "2",
+    "imageUrl": "./img/2.jpg",
+    "title": "Super Metroid",
+    "version": [0],
+    "price": 77,
+    "genres": ["Action", "Adventure"],
+    "developers": ["Nintendo"],
+    "year": 1994,
+    "description": "Super Metroid is arguably the most influential game in the 2D action/adventure genre, and it’s easy to see why. With flawless action, impeccable level design, out-of-this-world atmosphere, a totally badass heroine, and an enormous overworld to explore, few games can hope to reach its rung on the ladder of pure gaming bliss. From the moment you set foot on Zebes to the moment you leave it exploding in your wake, every moment of this game is unadulterated fun, and it only gets better the further you get. As one of the best (if not the best) entry in the Metroid series, it’s no wonder Samus Aran’s SNES adventure made it so high on our list."
+  },
+  {
+    "id": "3",
+    "imageUrl": "./img/3.png",
+    "title": "The Legend of Zelda: A Link to the Past",
+    "version": [0, 1],
+    "price": 32.88,
+    "genres": ["Action", "Adventure"],
+    "developers": ["Nintendo"],
+    "year": 1992,
+    "description": "The original Legend of Zelda for NES set the basic structure the series would continue to follow for the next quarter century. A Link to the Past made that series a legend. From the very outset of the game the player is thrown in the middle of the action. From the first swing of your sword to the final confrontation with Ganondorf, the game embodies pure SNES perfection. Perhaps it's the well-balanced enemies, the memorable bosses, or the brilliant light and dark world system that sets the game apart. Or maybe it's the tight controls, perfected item system, or the glorious soundtrack. Whatever the reason, A Link to the Past remains our choice for the greatest game of possibly the greatest system of all time."
+  },
+  {
+    "id": "4",
+    "imageUrl": "./img/4.jpg",
+    "title": "Teenage Mutant Ninja Turtles IV: Turtles in Time",
+    "version": [0, 1],
+    "price": 68.99,
+    "genres": ["Beat'em up"],
+    "developers": ["Konami"],
+    "year": 1992,
+    "description": "Turtle Power! You can't have a nostalgic look back on any part of the '90s without running into the Teenage Mutant Ninja Turtles at some point, and sure enough here they are clocking in at #39 on our countdown thanks to the SNES port of their incredible arcade brawler Turtles in Time. This game had it all – bright graphics that perfectly captured the look and personality of the classic cartoon, a cool Mode 7-utilizing throw attack that let you toss enemies into the screen and, best of all, time travel. Seeing Leo, Raph, Don and Mikey warp through history and pop up in the age of the dinosaurs, the wild west and the far-flung future was even more epic and awesome than we could have imagined."
+  },
+  {
+    "id": "5",
+    "imageUrl": "./img/5.jpeg",
+    "title": "Chrono Trigger",
+    "version": [0, 1],
+    "price": 950,
+    "genres": ["RPG"],
+    "developers": ["Square"],
+    "year": 1995,
+    "description": "Chrono Trigger wasn't the first Japanese RPG. It certainly won't be the last. But it's arguable that Square's masterpiece is the best. Remarkably, the action-packed story of a boy's quest through history stands the test of time, with almost flawless pacing and gameplay. Most notably, Chrono Trigger features 13 endings, a stunning feat for a lengthy RPG. It seems only fitting that three of Japan's most legendary creators — Hironobu Sakaguchi (Final Fantasy), Yuji Hori (Dragon Quest), and Akira Toriyama (Dragon Ball) — were part of the creative team responsible for Trigger's conception and development. Square's epic saga might have come towards the end of the SNES's life, but some things are best saved for last."
+  },
+  {
+    "id": "6",
+    "imageUrl": "./img/6.webp",
+    "title": "Final Fantasy III",
+    "version": [1],
+    "price": 83,
+    "genres": ["RPG"],
+    "developers": ["Square"],
+    "year": 1994,
+    "description": "The first Final Fantasy game was released for the original NES in 1990, and Final Fantasy III stormed onto the Super NES scene in 1994. One of the most engrossing RPGs of its era, Final Fantasy III stands up well to the test of time and still intrigues RPG fans to this day. Known for its intriguing storylines, the Final Fantasy series has always been filled with imaginative plots and twisting storylines. In Final Fantasy III, magical beings called The Espers return from centuries past to destroy the rational and mechanized new world. An amazing adventure unfolds from there, filled with challenging battles and perplexing puzzles."
+  },
+  {
+    "id": "7",
+    "imageUrl": "./img/7.jpg",
+    "title": "EarthBound",
+    "version": [0, 1],
+    "price": 39.99,
+    "genres": ["RPG"],
+    "developers": ["Ape", "HAL Laboratory"],
+    "year": 1995,
+    "description": "The only entry in the Mother series to see a North American release, EarthBound was met with poor sales in the U.S. However, its hilarious commentary on American culture, psychedelic premise, and unique take on the RPG genre instantly cemented it as a cult classic. The story follows Ness, a character who grew to know greater popularity than his game thanks to his inclusion in the Super Smash Bros. series of fighting games. A prophetic alien bee named Buzz Buzz changes the course of the young boy's life, setting him on an adventure that those of us who have experienced it would never forget."
+  },
+  {
+    "id": "8",
+    "imageUrl": "./img/8.jpg",
+    "title": "Mega Man X",
+    "version": [0, 1],
+    "price": 49.49,
+    "genres": ["Action", "Platformer"],
+    "developers": ["Capcom"],
+    "year": 1993,
+    "description": "The evolution of the original series, Mega Man X changed the game by introducing new mechanics, new characters, and a new take on the Blue Bomber. The addition of wall jumping and dashing propelled X into a class of its own, allowing the player to interact with practically every square inch of the entire game. Rousing rock tunes offset the frantic, fast-paced gameplay. Killer bosses (like Chill Penguin and Sting Chameleon) give you ample motivation to perfect your skills. X was the first — though certainly not the last — reinvention of Mega Man. It somehow managed to build upon the brilliant foundation of the original, and for that alone it more than deserves a spot on this list."
+  },
+  {
+    "id": "9",
+    "imageUrl": "./img/9.webp",
+    "title": "Street Fighter II Turbo",
+    "version": [0, 1],
+    "price": 30.64,
+    "genres": ["Action", "Fighting"],
+    "developers": ["Capcom"],
+    "year": 1992,
+    "description": "Another genre-defining masterpiece that is arguably still one of the best in its class. Super Street Fighter II Turbo was, for its time, the best fighting game available for a home console, and the pinnacle of evolution for this particular title. While it couldn't quite match what was available in the arcades, if you wanted to pit Ryu against Ken in the comfort of your own home, you couldn't do much better than this. Street Fighter had a certain elegance and simplicity back in the early '90s, something that no doubt contributed to its lasting appeal. To this day, it's hard to forget the first time we pulled off a Hadouken or when we fought M. Bison for the first time. Street Fighter was truly the beginning of a huge boom for the fighting game genre, and a trailblazer for dozens of other franchises."
+  },
+  {
+    "id": "10",
+    "imageUrl": "./img/10.webp",
+    "title": "Super Mario World 2: Yoshi's Island",
+    "version": [0, 1],
+    "price": 27,
+    "genres": ["Platformer"],
+    "developers": ["Nintendo"],
+    "year": 1995,
+    "description": "Yoshi’s Island finally put gamers in control of Mario’s pet dinosaur/steed/friend. As such, this Super Mario World sequel plays differently than all the other Mario games, and that’s a large part of why it’s so awesome. The game defined Yoshi as a character, giving him some of his most iconic moves like the flutter kick and egg throw. Yoshi’s Island had great puzzles, awesome powerups, and affected the canon of Mario’s games for the next decade and a half (you can thank Yoshi’s Island for Baby Mario)."
+  },
+  {
+    "id": "11",
+    "imageUrl": "./img/11.webp",
+    "title": "Super Mario Kart",
+    "version": [0, 1],
+    "price": 69.99,
+    "genres": ["Arcade", "Racing"],
+    "developers": ["Nintendo"],
+    "year": 1992,
+    "description": "Mario has visited many established genres and franchises, but with Super Mario Kart he started something new. Prior to Kart, racing games were fairly straightforward, leaning towards simulation or arcade, but rarely deviating too much from either path. Kart took racing through the jungle and off a cliff, imbuing players with power-ups and all sorts of crazy antics, including a highly addictive multiplayer mode. It's impossible to calculate how many hours we spent chasing each other around maze-like battlegrounds or avoiding ricocheting shells in an effort to pop balloons. Regardless, Super Mario Kart quickly became one of the most addicting SNES experiences ever, long after all of the races had been won and the shortcuts had been discovered."
+  },
+  {
+    "id": "12",
+    "imageUrl": "./img/12.jpeg",
+    "title": "Star Fox",
+    "version": [0, 1],
+    "price": 24.95,
+    "genres": ["Shoot'em up"],
+    "developers": ["Nintendo"],
+    "year": 1993,
+    "description": "Long before Fox McCloud barrel rolled into our lives, his father, James, was already facing off against Andross with his fellow furry flyers. In addition to fast-paced, frenetic gameplay, this action-packed flight simulation game was also distinguished as being the first Nintendo title to feature three-dimensional graphics, back when this was still incredibly rare. Throw in some beyond memorable characters (Falco, Slippy, and Peppy, for instance), and you have a title that is worthy of being remembered."
+  },
+  {
+    "id": "13",
+    "imageUrl": "./img/13.png",
+    "title": "Secret of Mana",
+    "version": [0, 1],
+    "price": 59.97,
+    "genres": ["Action", "RPG"],
+    "developers": ["Square"],
+    "year": 1993,
+    "description": "This delightful action RPG shook up the genre with its fun and deep battle system, incorporating real-time action with a brilliant use of timed attacks. Players are required to know just when to evade and when to go in for the kill, and the depth only increases as the story progresses. There are also plentiful characters and weapons to equip, making for a highly strategic, and highly satisfying, RPG experience. Secret of Mana, which is actually the sequel to Final Fantasy Adventure for the Game Boy, also allows for co-op gameplay, which was highly unique for an RPG at the time. Throw in beautiful music and a timeless story and you have a delightful mash between Final Fantasy and The Legend of Zelda that shouldn't be missed."
+  },
+  {
+    "id": "14",
+    "imageUrl": "./img/14.jpg",
+    "title": "Super Punch-Out!!",
+    "version": [0, 1],
+    "price": 62.62,
+    "genres": ["Action", "Fighting"],
+    "developers": ["Nintendo"],
+    "year": 1994,
+    "description": "As awesome as it was fighting Mike Tyson, the more surreal and exaggerated characters of Super Punch-Out!! made for a more exciting, and in some ways better, challenge several years later. The gameplay of Super Punch-Out!! is nothing fancy. It's the same hooks, uppercuts and super punches as always. However the precision-based action of each match is truly spectacular, boiling down to studying each outlandish opponent for weaknesses. Best of all was finding a boxer's instant KO point. While it was certainly possible to wear an enemy down, even taking advantage of low defenses, most of your foes featured openings that would instantly take them down."
+  },
+  {
+    "id": "15",
+    "imageUrl": "./img/15.webp",
+    "title": "Donkey Kong Country 2: Diddy’s Kong Quest",
+    "version": [0, 1],
+    "price": 24.95,
+    "genres": ["Platformer"],
+    "developers": ["Rare"],
+    "year": 1995,
+    "description": "Bigger, badder, and more barrel-filled than the original, Donkey Kong Country 2 took the DKC recipe and pumped it up with gorilla steroids. This time around, Donkey Kong himself is captured by Kremlings and it’s up to Diddy Kong and newcomer Dixie Kong to hop and bop their way through dozens of beautiful and challenging levels to save him. Along the way they enlist a wacky cast of ride-able animal buddies (like a spider and a rattlesnake) to kollect koins, kill kreatures, kartwheel over kanyons and… do other things that inexplicably start with the letter K."
+  }
+]

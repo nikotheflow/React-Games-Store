@@ -42,23 +42,18 @@ h3 {
 }
 
 .text {
-  &__title {
+  &_primary {
     font-size: 16px;
     font-weight: 700;
-  }
-
-  &__primary {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  &__main {
-    font-size: 16px;
   }
 
   &_secondary {
     font-size: 14px;
     color: #999;
+  }
+
+  &__main {
+    font-size: 16px;
   }
 
   &__center {
@@ -152,26 +147,35 @@ body {
   background-color: transparent;
   transition: 0.2s ease;
 
-  &_contained {
+  &_color_white {
+    color: #aaa;
+    background-color: #fff;
+
+    &:hover {
+      color: white;
+      background-color: #383634;
+    }
+  }
+
+  &_color_red {
     color: white;
     background-color: #ef3b39;
-    border: none;
-    padding: 4px 20px;
 
     &:hover {
       background-color: #df3634;
     }
   }
 
+  &_contained {
+    border: none;
+    padding: 4px 20px;
+  }
+
   &_outlined {
-    color: #aaa;
-    background-color: transparent;
     border: 1px solid #aaa;
     padding: 3px 20px;
 
     &:hover {
-      color: white;
-      background-color: #383634;
       border: 1px solid #383634;
     }
   }
@@ -241,6 +245,13 @@ body {
   grid-gap: 20px;
   margin-bottom: auto;
 
+  .is-active {
+    color: #383634;
+    font-weight: 700;
+  }
+}
+
+.filter {
   &__title {
     margin-bottom: 6px;
   }
@@ -255,6 +266,11 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 2px;
+    cursor: pointer;
+
+    &:hover {
+      color: #383634;
+    }
 
     &-title {
       white-space: nowrap;

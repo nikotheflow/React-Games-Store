@@ -17,6 +17,7 @@ export type TSort = {
 export interface IFilterSliceState {
   searchValue: string;
   activeGenres: string;
+  activeDeveloper: string;
   sortItem: TSort;
   showItem: number;
   currentPage: number;

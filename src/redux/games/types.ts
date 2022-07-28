@@ -1,6 +1,7 @@
 export type TFetchGamesArgs = {
   currentPage: number;
   genres: string;
+  developer: string;
   title: string;
   sortBy: string;
   order: string;
