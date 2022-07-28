@@ -25,4 +25,5 @@ export enum Status {
 export interface IGamesSliceState {
   items: TGame[];
   status: Status;
+  totalGames: number;
 }

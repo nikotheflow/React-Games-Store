@@ -15,7 +15,7 @@ import { setActiveGenres, setCurrentPage, setFilters } from '../redux/filter/sli
 
 import { Filters, GameBlock, Skeleton, View, Pagination, sortList } from '../components/';
 
-const Home = () => {
+const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isSearch = React.useRef(false);
@@ -23,7 +23,6 @@ const Home = () => {
 
   const { items, status } = useSelector(selectGamesData);
   const { searchValue, activeGenres, sortItem, currentPage, showItem } = useSelector(selectFilter);
-  const activeSort = sortItem.property;
 
   const onChangeFilters = useCallback((genre: string) => {
     dispatch(setActiveGenres(genre));
@@ -36,18 +35,18 @@ const Home = () => {
   const getGames = async () => {
     const genres = activeGenres ? `&genres=${activeGenres}` : '';
     const title = searchValue ? `&title=${searchValue}` : '';
-    const sortBy = '&sortBy=' + activeSort.replace('-', '');
-    const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
+    const sortBy = '&sortBy=' + sortItem.property;
+    const order = '&order=' + sortItem.order;
     const limit = showItem;
 
     dispatch(
       fetchGames({
         currentPage,
+        limit,
         genres,
-        title,
         sortBy,
         order,
-        limit,
+        title,
       }),
     );
   };
@@ -55,7 +54,9 @@ const Home = () => {
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1)) as unknown as TFetchGamesArgs;
-      const sortItem = sortList.find((obj) => obj.property === params.sortBy);
+      const sortItem = sortList.find(
+        (obj) => obj.property === params.sortBy && obj.order === params.order,
+      );
 
       dispatch(
         setFilters({
@@ -77,7 +78,7 @@ const Home = () => {
         currentPage,
         activeGenres,
         sortBy: sortItem.property,
-        order: sortItem.property[0] === '-' ? 'desc' : 'asc',
+        order: sortItem.order,
       });
 
       navigate(`?${queryString}`);
@@ -92,7 +93,7 @@ const Home = () => {
     }
 
     isSearch.current = false;
-  }, [currentPage, activeGenres, searchValue, activeSort, showItem]);
+  }, [currentPage, activeGenres, searchValue, sortItem, showItem]);
 
   const games = items.map((obj: TGame) => <GameBlock {...obj} key={obj.id} />);
   const skeletons = [...new Array(showItem)].map((_, i) => <Skeleton key={i} />);

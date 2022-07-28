@@ -6,6 +6,7 @@ import { IGamesSliceState, Status, TGame } from './types';
 const initialState: IGamesSliceState = {
   items: [],
   status: Status.LOADING,
+  totalGames: 15,
 };
 
 const gamesSlice = createSlice({

@@ -3,17 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectShowItem, selectSortItem } from '../redux/filter/selectors';
 import { setShow, setSort } from '../redux/filter/slice';
-import { SortPropertyEnum, TSort } from '../redux/filter/types';
+import { SortPropertyEnum, SortOrderEnum, TSort } from '../redux/filter/types';
 
 type PopupClick = MouseEvent & {
   path: Node[];
 };
 
 export const sortList: TSort[] = [
-  { title: 'name (A - Z)', property: SortPropertyEnum.TITLE_ASC },
-  { title: 'name (Z - A)', property: SortPropertyEnum.TITLE_DESC },
-  { title: 'price (low to high)', property: SortPropertyEnum.PRICE_ASC },
-  { title: 'price (high to low)', property: SortPropertyEnum.PRICE_DESC },
+  { title: 'name (A - Z)', property: SortPropertyEnum.TITLE, order: SortOrderEnum.ASC },
+  { title: 'name (Z - A)', property: SortPropertyEnum.TITLE, order: SortOrderEnum.DESC },
+  { title: 'price (low to high)', property: SortPropertyEnum.PRICE, order: SortOrderEnum.ASC },
+  { title: 'price (high to low)', property: SortPropertyEnum.PRICE, order: SortOrderEnum.DESC },
 ];
 
 export const showList: number[] = [4, 8, 12];
@@ -69,9 +69,6 @@ export const View: React.FC = React.memo(() => {
               {num}
             </li>
           ))}
-          {/* <li className="show__item">4</li>
-          <li className="show__item">8</li>
-          <li className="show__item is-active ">12</li> */}
         </ul>
       </div>
 

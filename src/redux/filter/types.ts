@@ -1,13 +1,17 @@
 export enum SortPropertyEnum {
-  TITLE_ASC = 'title',
-  TITLE_DESC = '-title',
-  PRICE_ASC = 'price',
-  PRICE_DESC = '-price',
+  TITLE = 'title',
+  PRICE = 'price',
+}
+
+export enum SortOrderEnum {
+  ASC = 'asc',
+  DESC = 'desc',
 }
 
 export type TSort = {
   title: string;
   property: SortPropertyEnum;
+  order: SortOrderEnum;
 };
 
 export interface IFilterSliceState {
