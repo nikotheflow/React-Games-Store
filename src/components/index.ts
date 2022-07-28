@@ -8,4 +8,4 @@ export * from './CartEmpty';
 export * from './CartItem';
 export * from './Filters';
 export * from './Header';
-export * from './Sort';
+export * from './View';

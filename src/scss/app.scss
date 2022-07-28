@@ -56,7 +56,7 @@ h3 {
     font-size: 16px;
   }
 
-  &__secondary {
+  &_secondary {
     font-size: 14px;
     color: #999;
   }
@@ -476,26 +476,36 @@ body {
   }
 }
 
-.sort {
+.view {
   width: 100%;
   display: flex;
   justify-content: space-between;
   position: relative;
   margin-bottom: 20px;
 
+  .is-active {
+    color: #383634;
+    font-weight: 700;
+  }
+}
+
+.sort {
   &__link {
-    color: #ef3b39;
-    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__link {
     cursor: pointer;
   }
 
   &__popup {
     position: absolute;
-    top: 54px;
+    top: 44px;
     left: 20px;
     display: block;
     overflow: hidden;
-    box-shadow: 0px 0px 12px 1px rgba(#383634, 0.2);
+    box-shadow: 0px 0px 12px -2px rgba(#383634, 0.2);
     z-index: 5;
     margin: 0;
     padding: 0;
@@ -503,18 +513,43 @@ body {
     &-item {
       font-size: 14px;
       margin: 0;
-      padding: 8px 12px;
+      padding: 6px 12px;
       text-align: left;
       cursor: pointer;
 
       &:hover {
-        background-color: lighten(#ef3b39, 40);
+        color: #383634;
       }
     }
 
-    .active {
-      color: #ef3b39;
+    .is-active {
       font-weight: 600;
+    }
+  }
+}
+
+.show {
+  box-sizing: border-box;
+  display: flex;
+
+  &__title {
+    margin-right: 6px;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    padding: 0 4px;
+    margin: 0 2px;
+    cursor: pointer;
+    font-weight: 700;
+
+    &:hover {
+      color: #383634;
     }
   }
 }

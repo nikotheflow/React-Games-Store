@@ -20,7 +20,7 @@ export const Filters: React.FC<FiltersProps> = React.memo(({ onChangeFilters }) 
         <ul className="filters__list">
           {genres.map((genre, i) => (
             <li className="filters__item" key={i}>
-              <label className="filters__item-title text__secondary">
+              <label className="filters__item-title text_secondary">
                 <input
                   className="filters__item-checkbox"
                   name="genres"
@@ -37,7 +37,7 @@ export const Filters: React.FC<FiltersProps> = React.memo(({ onChangeFilters }) 
         <ul className="filters__list">
           {devlopers.map((devloper, i) => (
             <li className="filters__item" key={i}>
-              <label className="filters__item-title text__secondary">
+              <label className="filters__item-title text_secondary">
                 <input
                   className="filters__item-checkbox"
                   name="genres"

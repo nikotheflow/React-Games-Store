@@ -19,7 +19,6 @@ export const CartItem: React.FC<TCartItemProps> = ({
   count,
 }) => {
   const dispatch = useDispatch();
-  console.log({ id, imageUrl, title, price, version, count });
 
   const item = {
     id,
@@ -53,7 +52,7 @@ export const CartItem: React.FC<TCartItemProps> = ({
       <img className="cart__item-img game-img" src={imageUrl} alt="game"></img>
       <div className="cart__item-info">
         <h3 className="cart__item-title">{title}</h3>
-        <p className="cart__item-option text__secondary">{version} version</p>
+        <p className="cart__item-option text_secondary">{version} version</p>
       </div>
       <div className="cart__item-counter ">
         <button className="cart__item-counter-btn btn btn_round" onClick={onClickMinus}>

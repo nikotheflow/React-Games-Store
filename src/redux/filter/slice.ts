@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFilterSliceState, SortPropertyEnum, TSort } from './types';
+import { showList, sortList } from '../../components';
+import { IFilterSliceState, TSort } from './types';
 
 const initialState: IFilterSliceState = {
   searchValue: '',
   activeGenres: '',
-  sortItem: { title: 'Name (A - Z)', property: SortPropertyEnum.TITLE_ASC },
+  sortItem: sortList[0],
+  showItem: showList[1],
   currentPage: 1,
 };
 
@@ -21,6 +23,9 @@ const filterSlice = createSlice({
     setSort(state, action: PayloadAction<TSort>) {
       state.sortItem = action.payload;
     },
+    setShow(state, action: PayloadAction<number>) {
+      state.showItem = action.payload;
+    },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
@@ -32,7 +37,7 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setSearchValue, setActiveGenres, setSort, setCurrentPage, setFilters } =
+export const { setSearchValue, setActiveGenres, setSort, setShow, setCurrentPage, setFilters } =
   filterSlice.actions;
 
 export default filterSlice.reducer;

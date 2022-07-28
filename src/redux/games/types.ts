@@ -4,6 +4,7 @@ export type TFetchGamesArgs = {
   title: string;
   sortBy: string;
   order: string;
+  limit: number;
 };
 
 export type TGame = {

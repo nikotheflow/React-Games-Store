@@ -13,7 +13,7 @@ import { TFetchGamesArgs, TGame } from '../redux/games/types';
 import { selectFilter } from '../redux/filter/selectors';
 import { setActiveGenres, setCurrentPage, setFilters } from '../redux/filter/slice';
 
-import { Filters, GameBlock, Skeleton, Sort, Pagination, sortList } from '../components/';
+import { Filters, GameBlock, Skeleton, View, Pagination, sortList } from '../components/';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const Home = () => {
   const isMounted = React.useRef(false);
 
   const { items, status } = useSelector(selectGamesData);
-  const { searchValue, activeGenres, sortItem, currentPage } = useSelector(selectFilter);
+  const { searchValue, activeGenres, sortItem, currentPage, showItem } = useSelector(selectFilter);
   const activeSort = sortItem.property;
 
   const onChangeFilters = useCallback((genre: string) => {
@@ -38,6 +38,7 @@ const Home = () => {
     const title = searchValue ? `&title=${searchValue}` : '';
     const sortBy = '&sortBy=' + activeSort.replace('-', '');
     const order = '&order=' + (activeSort[0] === '-' ? 'desc' : 'asc');
+    const limit = showItem;
 
     dispatch(
       fetchGames({
@@ -46,6 +47,7 @@ const Home = () => {
         title,
         sortBy,
         order,
+        limit,
       }),
     );
   };
@@ -61,6 +63,7 @@ const Home = () => {
           activeGenres: params.genres,
           currentPage: params.currentPage,
           sortItem: sortItem ? sortItem : sortList[0],
+          showItem: params.limit,
         }),
       );
 
@@ -89,17 +92,17 @@ const Home = () => {
     }
 
     isSearch.current = false;
-  }, [currentPage, activeGenres, searchValue, activeSort]);
+  }, [currentPage, activeGenres, searchValue, activeSort, showItem]);
 
   const games = items.map((obj: TGame) => <GameBlock {...obj} key={obj.id} />);
-  const skeletons = [...new Array(8)].map((_, i) => <Skeleton key={i} />);
+  const skeletons = [...new Array(showItem)].map((_, i) => <Skeleton key={i} />);
 
   return (
     <>
       <div className="catalog">
         <div className="catalog__header">
           <h2 className="catalog__title">Super Nintendo Entertainment System</h2>
-          <span className="catalog__count text__secondary">{items.length} games</span>
+          <span className="catalog__count text_secondary">{items.length} games</span>
         </div>
         {status === 'error' && (
           <p className="text__main text__center wrapper_content">
@@ -110,7 +113,7 @@ const Home = () => {
           <div className="catalog__main">
             <Filters value={activeGenres} onChangeFilters={onChangeFilters} />
             <div className="catalog__content">
-              <Sort />
+              <View />
               <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
               <Pagination currentPage={currentPage} onChangePage={onChangePage} />
             </div>

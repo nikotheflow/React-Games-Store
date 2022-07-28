@@ -14,5 +14,6 @@ export interface IFilterSliceState {
   searchValue: string;
   activeGenres: string;
   sortItem: TSort;
+  showItem: number;
   currentPage: number;
 }
