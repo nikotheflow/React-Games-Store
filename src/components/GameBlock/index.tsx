@@ -5,30 +5,23 @@ import { Link } from 'react-router-dom';
 import { selectCartItem } from '../../redux/cart/selectors';
 import { addItem } from '../../redux/cart/slice';
 import { TCartItem } from '../../redux/cart/types';
+import { TGame } from '../../redux/games/types';
 
-type TGameBlockProps = {
-  id: string;
-  imageUrl: string;
-  title: string;
-  price: number;
-  version: number[];
-  genres: string[];
-};
+export const versionNames = ['Physical', 'Digital'];
 
-export const GameBlock: React.FC<TGameBlockProps> = ({
+export const GameBlock: React.FC<TGame> = ({
   id,
   imageUrl,
   title,
   price,
   version,
   genres,
+  developers,
 }) => {
   const dispatch = useDispatch();
-  const versionNames = ['Physical', 'Digital'];
+  
   const [activeVersion, setActiveVersion] = React.useState(version[0]);
-
   const cartItem = useSelector(selectCartItem(id, versionNames, activeVersion));
-
   const itemCount = cartItem ? cartItem.count : 0;
 
   const onClickAdd = () => {
@@ -45,20 +38,20 @@ export const GameBlock: React.FC<TGameBlockProps> = ({
   };
 
   return (
-    <div className="game">
+    <div className="game wrapper_content">
       <img className="game__img" src={imageUrl} alt="game"></img>
       <Link className="game__link" to={`/game/${id}`}>
         <h3 className="game__title">{title}</h3>
       </Link>
       <div className="game__info">
-        <p className="game__text">Nintendo</p>
-        <p className="game__text">{genres.join(', ')}</p>
+        <p className="game__text text_secondary">{developers.join(', ')}</p>
+        <p className="game__text text_secondary">{genres.join(', ')}</p>
       </div>
 
       <ul className="game__options">
         {version.map((versionId) => (
           <li
-            className={activeVersion === versionId ? 'game__option active' : 'game__option'}
+            className={'game__option' + (activeVersion === versionId ? ' active' : '')}
             key={versionId}
             onClick={() => setActiveVersion(versionId)}>
             {versionNames[versionId]}

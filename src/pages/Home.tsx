@@ -11,7 +11,7 @@ import { selectGamesData } from '../redux/games/selectors';
 import { TFetchGamesArgs, TGame } from '../redux/games/types';
 
 import { selectFilter } from '../redux/filter/selectors';
-import { setActiveGenres, setCurrentPage, setFilters } from '../redux/filter/slice';
+import { setCurrentPage, setFilters } from '../redux/filter/slice';
 
 import { Filters, GameBlock, Skeleton, View, Pagination, sortList } from '../components/';
 
@@ -24,10 +24,6 @@ const Home: React.FC = () => {
   const { items, status } = useSelector(selectGamesData);
   const { searchValue, activeGenres, activeDeveloper, sortItem, currentPage, showItem } =
     useSelector(selectFilter);
-
-  const onChangeFilters = useCallback((genre: string) => {
-    dispatch(setActiveGenres(genre));
-  }, []);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -102,29 +98,26 @@ const Home: React.FC = () => {
   const skeletons = [...new Array(showItem)].map((_, i) => <Skeleton key={i} />);
 
   return (
-    <>
-      <div className="catalog">
-        <div className="catalog__header">
-          <h2 className="catalog__title">Super Nintendo Entertainment System</h2>
-          <span className="catalog__count text_secondary">{items.length} games</span>
-        </div>
-        {status === 'error' && (
-          <p className="text__main text__center wrapper_content">
-            Games catalog could not be loaded. Please try again later.
-          </p>
-        )}
-        {status !== 'error' && (
-          <div className="catalog__main">
-            <Filters />
-            <div className="catalog__content">
-              <View />
-              <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
-              <Pagination currentPage={currentPage} onChangePage={onChangePage} />
-            </div>
-          </div>
-        )}
+    <div className="catalog">
+      <div className="catalog__header">
+        <h2 className="catalog__title">Super Nintendo Entertainment System</h2>
       </div>
-    </>
+      {status === 'error' && (
+        <p className="text__main text__center wrapper_content">
+          Games catalog could not be loaded. Please try again later.
+        </p>
+      )}
+      {status !== 'error' && (
+        <div className="catalog__main">
+          <Filters />
+          <div className="catalog__content">
+            <View />
+            <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
+            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

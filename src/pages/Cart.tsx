@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectCart } from '../redux/cart/selectors';
 import { clearCart } from '../redux/cart/slice';
+import { TCartItem } from '../redux/cart/types';
 
 import { CartItem, CartEmpty } from '../components';
 
@@ -31,7 +32,7 @@ const Cart: React.FC = () => {
           </button>
         </div>
         <div className="cart__main">
-          {items.map((obj: any) => (
+          {items.map((obj: TCartItem) => (
             <CartItem key={obj.id + obj.version} {...obj} />
           ))}
         </div>

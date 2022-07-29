@@ -15,6 +15,9 @@ export type TGame = {
   version: number[];
   price: number;
   genres: string[];
+  developers: string[];
+  year: number;
+  description: string;
 };
 
 export enum Status {

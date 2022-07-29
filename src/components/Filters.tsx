@@ -73,11 +73,11 @@ export const Filters: React.FC = () => {
         </ul>
       </div>
       <button
-        className="btn btn_contained btn_color_white"
+        className=" btn btn_contained btn_color_white text_secondary"
         onClick={() => {
           clearFilters();
         }}>
-        Clear filters
+        Reset filters
       </button>
     </div>
   );

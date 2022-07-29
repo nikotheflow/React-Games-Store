@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
       </Link>
       {location.pathname !== '/cart' && (
         <div className="header__right">
-          <Search />
+          {!location.pathname.startsWith('/game/') && <Search />}
           <Link to="/cart">
             <button className="btn btn_contained btn_color_red">
               <span>${totalPrice}</span>

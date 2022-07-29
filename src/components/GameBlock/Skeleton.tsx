@@ -2,7 +2,7 @@ import ContentLoader from 'react-content-loader';
 
 export const Skeleton = () => (
   <ContentLoader
-    className="game"
+    className="game wrapper_content"
     speed={2}
     width={245}
     height={307}
