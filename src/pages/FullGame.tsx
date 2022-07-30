@@ -32,7 +32,7 @@ const FullGame: React.FC = () => {
   return (
     <div className="game-page">
       <div className="game-page__header">
-        <h2 className="game-page__title">{game.title}</h2>
+        <h2 className="game-page__title text_title">{game.title}</h2>
       </div>
 
       <div className="game-page__content">
@@ -43,7 +43,10 @@ const FullGame: React.FC = () => {
             alt="game"
             width="300"></img>
         </div>
-        <div className="game-page__info wrapper_content">
+        <div className="game-page__info text_main wrapper_content ">
+          <div className="game-page__description">
+            <p>{game.description}</p>
+          </div>
           <div className="game-page__parameters">
             <p className="game-page__parameter">Developers: {game.developers.join(', ')}</p>
             <p className="game-page__parameter">Genres: {game.genres.join(', ')}</p>
@@ -53,11 +56,8 @@ const FullGame: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="game-page__description wrapper_content">
-          <p>{game.description}</p>
-        </div>
         <Link className="game-page__return-btn" to="/">
-          <a className="btn btn_contained btn_color_white">Return to shop</a>
+          <a className="btn btn_contained btn_color_white text_secondary">Return to shop</a>
         </Link>
       </div>
     </div>

@@ -40,12 +40,10 @@ export const Filters: React.FC = () => {
     <div className="filters">
       <div className="filters__filter wrapper_content">
         <p className="filter__title text_primary">Genre:</p>
-        <ul className="filter__list">
+        <ul className="filter__list text_secondary">
           {genres.map((genre, i) => (
             <li
-              className={
-                'filter__item text_secondary ' + (genre === activeGenres ? 'is-active' : '')
-              }
+              className={'filter__item' + (genre === activeGenres ? ' is-active' : '')}
               key={i}
               onClick={() => {
                 applyGenre(genre);
@@ -61,7 +59,7 @@ export const Filters: React.FC = () => {
           {developers.map((developer, i) => (
             <li
               className={
-                'filter__item text_secondary ' + (developer === activeDeveloper ? 'is-active' : '')
+                'filter__item text_secondary' + (developer === activeDeveloper ? ' is-active' : '')
               }
               key={i}
               onClick={() => {

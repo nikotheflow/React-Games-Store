@@ -52,19 +52,22 @@ export const View: React.FC = React.memo(() => {
   }, []);
 
   return (
-    <div className="view wrapper_content text_secondary">
+    <div className="view wrapper_content">
       <div className="sort">
-        <span className="sort__title">Sort by: </span>
-        <span ref={refSort} className="sort__link is-active" onClick={() => setOpen(!isOpen)}>
+        <span className="sort__title text_secondary">Sort by: </span>
+        <span
+          ref={refSort}
+          className="sort__link is-active text_primary"
+          onClick={() => setOpen(!isOpen)}>
           {activeSort.title}
         </span>
       </div>
-      <div className="show ">
-        <span className="show__title">Show by:</span>
+      <div className="show">
+        <span className="show__title text_secondary">Show by:</span>
         <ul className="show__list">
           {showList.map((num, i) => (
             <li
-              className={activeShow === num ? 'show__item is-active' : 'show__item'}
+              className={'show__item text_secondary' + (activeShow === num ? ' is-active' : '')}
               key={i}
               onClick={() => applyShow(num)}>
               {num}
@@ -78,7 +81,8 @@ export const View: React.FC = React.memo(() => {
           {sortList.map((obj, i) => (
             <li
               className={
-                activeSort.title === obj.title ? 'sort__popup-item is-active' : 'sort__popup-item'
+                'sort__popup-item text_secondary' +
+                (activeSort.title === obj.title ? ' is-active' : '')
               }
               key={i}
               onClick={() => applySort(obj)}>

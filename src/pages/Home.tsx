@@ -100,7 +100,7 @@ const Home: React.FC = () => {
   return (
     <div className="catalog">
       <div className="catalog__header">
-        <h2 className="catalog__title">Super Nintendo Entertainment System</h2>
+        <h2 className="catalog__title text_title">Super Nintendo Entertainment System</h2>
       </div>
       {status === 'error' && (
         <p className="text__main text__center wrapper_content">

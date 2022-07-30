@@ -51,7 +51,7 @@ export const CartItem: React.FC<TCartItemProps> = ({
     <div className="cart__item">
       <img className="cart__item-img game-img" src={imageUrl} alt="game"></img>
       <div className="cart__item-info">
-        <h3 className="cart__item-title">{title}</h3>
+        <h3 className="cart__item-title text_primary">{title}</h3>
         <p className="cart__item-option text_secondary">{version} version</p>
       </div>
       <div className="cart__item-counter ">
