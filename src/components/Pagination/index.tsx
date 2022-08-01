@@ -20,8 +20,13 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePag
       ? items.length / showItem
       : totalGames / showItem;
 
+  const onClickPaginate = () => {
+    window.scroll(0, 0);
+  };
+
   return (
     <ReactPaginate
+      onClick={onClickPaginate}
       className={styles.root}
       previousLabel="<"
       breakLabel="..."
