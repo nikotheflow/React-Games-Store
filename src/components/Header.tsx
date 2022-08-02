@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
       <Link to="/">
         <div className="logo">
           <img className="logo-img" src={logoImg} width="32" height="32" alt="logo"></img>
-          <span className="logo-title">Retro Games Store</span>
+          <span className="logo-title">Retro Games</span>
         </div>
       </Link>
       {location.pathname !== '/cart' && (
@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
           {!location.pathname.startsWith('/game/') && <Search />}
           <Link to="/cart">
             <button className="cart-btn btn btn_contained btn_color_red">
-              <span className="cart-btn__total">${totalPrice}</span>
+              <span className="cart-btn__total">${totalPrice.toFixed(2)}</span>
               <div className="cart-btn__vertical-divider"></div>
               <div className="cart-btn__counter">
                 <img

@@ -5,7 +5,7 @@ import emptyImg from '../assets/img/marioDeath.gif';
 
 export const CartEmpty: React.FC = () => {
   return (
-    <div className="cart wrapper_content">
+    <div className="cart_empty wrapper_content">
       <img src={emptyImg} width="200" height="200" alt="mario death"></img>
       <h2 className="cart__title text_title">Your cart is empty!</h2>
       <div className="cart__text-block">

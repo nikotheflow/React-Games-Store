@@ -103,7 +103,7 @@ const Home: React.FC = () => {
         <h2 className="catalog__title text_title">Super Nintendo Entertainment System</h2>
       </div>
       {status === 'error' && (
-        <p className="text__main text__center wrapper_content">
+        <p className="text_main text_center wrapper_content">
           Games catalog could not be loaded. Please try again later.
         </p>
       )}
@@ -112,7 +112,15 @@ const Home: React.FC = () => {
           <Filters />
           <div className="catalog__content">
             <View />
-            <div className="catalog__items">{status === 'loading' ? skeletons : games}</div>
+            {status === 'loading' ? (
+              <div className="catalog__items">{skeletons}</div>
+            ) : searchValue && status === 'success' && items.length === 0 ? (
+              <p className="text_main text_center">
+                There is no games with such parameters. Please try to find anything else.
+              </p>
+            ) : (
+              <div className="catalog__items">{games}</div>
+            )}
             <Pagination currentPage={currentPage} onChangePage={onChangePage} />
           </div>
         </div>
