@@ -48,53 +48,33 @@ export const CartItem: React.FC<TCartItemProps> = ({
   };
 
   return (
-    <div className="cart__item">
-      <img className="cart__item-img game-img" src={imageUrl} alt="game"></img>
-      <div className="cart__item-info">
-        <h3 className="cart__item-title text_primary">{title}</h3>
-        <p className="cart__item-option text_secondary">{version} version</p>
+    <div className="cart-item wrapper_content">
+      <div className="cart-item__img-wrapper">
+        <img className="cart-item__img" src={imageUrl} alt="game"></img>
       </div>
-      <div className="cart__item-counter ">
-        <button className="cart__item-counter-btn btn btn_round" onClick={onClickMinus}>
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z"></path>
-          </svg>
-        </button>
-
-        <span className="cart__item-counter-number text_primary">{count}</span>
-
-        <button className="cart__item-counter-btn btn btn_round" onClick={onClickPlus}>
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z"></path>
-            <path d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z"></path>
-          </svg>
-        </button>
+      <div className="cart-item__info">
+        <h3 className="cart-item__title text_primary">{title}</h3>
+        <p className="cart-item__option text_secondary">Version: {version}</p>
       </div>
-
-      <span className="cart__item-price text_primary">${(count * price).toFixed(2)}</span>
-      <button
-        className="cart__item-delete-btn btn btn_round btn_round-secondary"
-        onClick={onClickRemove}>
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z"></path>
-          <path d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z"></path>
-        </svg>
-      </button>
+      <div className="cart-item__total-block">
+        <span className="cart-item__price text_primary text_large">
+          ${price.toFixed(2)} / piece
+        </span>
+        <div className="cart-item__controls">
+          <div className="cart-item__quantity quantity">
+            <button className="controls__btn quantity__btn-minus btn" onClick={onClickMinus}>
+              -
+            </button>
+            <span className="quantity__number text_primary">{count}</span>
+            <button className="controls__btn quantity__btn-plus btn" onClick={onClickPlus}>
+              +
+            </button>
+          </div>
+          <button className="controls__btn btn" onClick={onClickRemove}>
+            x
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
