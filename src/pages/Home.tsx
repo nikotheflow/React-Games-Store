@@ -13,7 +13,7 @@ import { TFetchGamesArgs, TGame } from '../redux/games/types';
 import { selectFilter } from '../redux/filter/selectors';
 import { setCurrentPage, setFilters } from '../redux/filter/slice';
 
-import { Filters, GameBlock, Skeleton, View, Pagination, sortList } from '../components/';
+import { Filters, GameBlock, Skeleton, View, Pagination, sortList, showList } from '../components/';
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +35,9 @@ const Home: React.FC = () => {
       const sortItem = sortList.find(
         (obj) => obj.property === params.sortBy && obj.order === params.order,
       );
+      const showItem = showList.find((number) => number === +params.limit);
 
+      console.log(showItem ? showItem : showList[1]);
       dispatch(
         setFilters({
           searchValue: params.title,
@@ -43,7 +45,7 @@ const Home: React.FC = () => {
           activeDeveloper: params.developer,
           currentPage: params.currentPage,
           sortItem: sortItem ? sortItem : sortList[0],
-          showItem: params.limit,
+          showItem: showItem ? showItem : showList[1],
         }),
       );
 

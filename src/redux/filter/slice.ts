@@ -40,6 +40,7 @@ const filterSlice = createSlice({
       state.activeGenres = action.payload.activeGenres;
       state.activeDeveloper = action.payload.activeDeveloper;
       state.sortItem = action.payload.sortItem;
+      state.showItem = action.payload.showItem;
       state.currentPage = action.payload.currentPage;
     },
   },
