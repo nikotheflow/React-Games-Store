@@ -15,11 +15,12 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePag
   const { totalGames, items } = useSelector(selectGamesData);
   const { searchValue, showItem, activeGenres, activeDeveloper } = useSelector(selectFilter);
 
-  const pageCount =
+  const pageCount = Math.ceil(
     searchValue || activeGenres || activeDeveloper
       ? items.length / showItem
-      : totalGames / showItem;
-
+      : totalGames / showItem,
+  );
+  
   const onClickPaginate = () => {
     window.scroll(0, 0);
   };

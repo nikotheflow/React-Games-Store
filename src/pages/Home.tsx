@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import qs from 'qs';
 
@@ -29,27 +29,6 @@ const Home: React.FC = () => {
     dispatch(setCurrentPage(page));
   };
 
-  const getGames = async () => {
-    const genres = activeGenres ? `&genres=${activeGenres}` : '';
-    const developer = activeDeveloper ? `&developers=${activeDeveloper}` : '';
-    const title = searchValue ? `&title=${searchValue}` : '';
-    const sortBy = '&sortBy=' + sortItem.property;
-    const order = '&order=' + sortItem.order;
-    const limit = showItem;
-
-    dispatch(
-      fetchGames({
-        currentPage,
-        limit,
-        genres,
-        developer,
-        sortBy,
-        order,
-        title,
-      }),
-    );
-  };
-
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1)) as unknown as TFetchGamesArgs;
@@ -70,7 +49,7 @@ const Home: React.FC = () => {
 
       isSearch.current = true;
     }
-  }, []);
+  }, [dispatch]);
 
   React.useEffect(() => {
     if (isMounted.current) {
@@ -84,23 +63,46 @@ const Home: React.FC = () => {
     }
 
     isMounted.current = true;
-  }, [currentPage, sortItem, showItem]);
+  }, [currentPage, sortItem, showItem, navigate]);
 
   React.useEffect(() => {
+    const getGames = async () => {
+      const genres = activeGenres ? `&genres=${activeGenres}` : '';
+      const developer = activeDeveloper ? `&developers=${activeDeveloper}` : '';
+      const title = searchValue ? `&title=${searchValue}` : '';
+      const sortBy = '&sortBy=' + sortItem.property;
+      const order = '&order=' + sortItem.order;
+      const limit = showItem;
+
+      dispatch(
+        fetchGames({
+          currentPage,
+          limit,
+          genres,
+          developer,
+          sortBy,
+          order,
+          title,
+        }),
+      );
+    };
+
     if (!isSearch.current) {
       getGames();
     }
 
     isSearch.current = false;
-  }, [currentPage, sortItem, showItem, activeGenres, activeDeveloper, searchValue]);
+  }, [currentPage, sortItem, showItem, activeGenres, activeDeveloper, searchValue, dispatch]);
 
   const games = items.map((obj: TGame) => <GameBlock {...obj} key={obj.id} />);
   const skeletons = [...new Array(showItem)].map((_, i) => <Skeleton key={i} />);
 
+  const isNotFoundGames = searchValue && status === 'success' && items.length === 0;
+
   return (
     <div className="catalog">
       <div className="catalog__header">
-        <h2 className="catalog__title text_title">Super Nintendo Entertainment System</h2>
+        <h2 className="catalog__title text_title">Super Nintendo Entertainment System games</h2>
       </div>
       {status === 'error' && (
         <p className="text_main text_center wrapper_content">
@@ -114,7 +116,7 @@ const Home: React.FC = () => {
             <View />
             {status === 'loading' ? (
               <div className="catalog__items">{skeletons}</div>
-            ) : searchValue && status === 'success' && items.length === 0 ? (
+            ) : isNotFoundGames ? (
               <p className="text_main text_center">
                 There is no games with such parameters. Please try to find anything else.
               </p>

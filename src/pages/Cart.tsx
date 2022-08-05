@@ -70,7 +70,7 @@ const Cart: React.FC = () => {
             <span className="text_main ">${totalPrice.toFixed(2)}</span>
           </div>
           <div className="cart__string">
-            <span className="text_main ">Shipping</span>
+            <span className="text_main ">Shipping:</span>
             <span className="text_main ">$19.00</span>
           </div>
           <div className="cart__string">

@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
       <Link to="/">
         <div className="logo">
           <img className="logo-img" src={logoImg} width="32" height="32" alt="logo"></img>
-          <span className="logo-title">Retro Games</span>
+          <span className="logo-title text_title">Retro Games Store</span>
         </div>
       </Link>
       {location.pathname !== '/cart' && (
