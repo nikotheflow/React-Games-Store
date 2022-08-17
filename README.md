@@ -1,4 +1,4 @@
-# Retro Games Store - NES games store on React
+# Retro Games Store - SNES games store on React
 The goal of the project is to develop the skills of React apps creating and applying the technologies that are used.
 
 ![RGS preview](/preview.png "RGS preview")
